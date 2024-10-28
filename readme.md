@@ -1,27 +1,35 @@
-# Dennis Ivy Digital Resume
+# Digital Resume
 
-A digital resume website built based on the content from my personal REAL [resume](./assets/resume.pdf)
+Welcome to my **Digital Resume** repository! This project serves as an online portfolio that showcases my skills, experience, and projects in a visually appealing and easily accessible format.
 
-View live demo here using github pages: [Live Demo](https://divanov11.github.io/Digital-Resume/)
+## Table of Contents
+- [About](#about)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## Preview
+## About
+The Digital Resume is designed to highlight my professional journey and competencies. It provides potential employers and collaborators with a clear overview of my background, skills, and accomplishments.
 
-<img src="assets\images\demo.gif">
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
 
-## Deploy your own digital resume
 
-1. clone repo `git clone https://github.com/divanov11/Digital-Resume` & update content to represent your information
-2. Create a new github repo
-3. Commit and push to github.
+## Features
+- Responsive design for optimal viewing on various devices
+- Interactive elements to engage visitors
+- Easy navigation through sections of the resume
+- Downloadable PDF version of the resume (if applicable)
 
-```
-git add .
-git commit -m "your commit notes"
-git push -u origin main
-```
+## Installation
+To run the Digital Resume locally on your machine, follow these steps:
 
-4. Publish with github pages
-
-Once you've added your project to GitHub, you can publish by going to the `settings` tab from your repo (this should be in the top right corner), then select `pages` (this should be towards the bottom left).
-
-From here make sure you have "deploy from branch" selected and save your settings. Once saved, it should take a few minutes to generate and display your new live GitHub pages url.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/aldo140/DigitalResume.git
