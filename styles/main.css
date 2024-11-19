@@ -55,7 +55,9 @@ li{
     padding-top: 1em;
     padding-bottom: 1em;
 }
-
+.section--page:hover {
+    transform: scale(1.02);
+}
 #wrapper--hero{
     display: flex;
     align-items: center;
@@ -178,3 +180,37 @@ li{
         padding-left: 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+.bold-line {
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.education-line {
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.education-category {
+    margin-bottom: 20px;
+}
+
+.education-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
