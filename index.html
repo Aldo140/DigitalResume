@@ -1,138 +1,260 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Aldo Ortiz's Resume</title>
-        <meta name="description" content="Aldo Ortiz's professional resume">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./styles/main.css">
-        <link rel="stylesheet" href="./styles/theme-switcher.css">
-    </head>
-    <body>
-        <div id="container--main">
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Aldo Ortiz | Developer & Analyst</title>
+  <meta name="description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aldo140.github.io/DigitalResume/" />
+  <meta property="og:title" content="Aldo Ortiz | Developer & Analyst" />
+  <meta property="og:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
+  <meta property="og:image" content="./assets/images/headshots.jfif" />
 
-            <section id="wrapper--hero" class="section--page">
-                <img id="profile-pic" src="./assets/images/headshots.jfif" alt="Aldo's Profile Picture">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://aldo140.github.io/DigitalResume/" />
+  <meta property="twitter:title" content="Aldo Ortiz | Developer & Analyst" />
+  <meta property="twitter:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
+  <meta property="twitter:image" content="./assets/images/headshots.jfif" />
 
-                <div>
-                    <h1 id="user-name">Aldo Ortiz</h1>
-                    <p id="bio">Aspiring data analyst with a passion for financial technology and a background in computer information systems. Driven to deliver results and grow in fast-paced environments.</p>
-                    <p id="email">👉 jorti104@mtroyal.ca</p> <!-- Update with your actual email -->
-                    <p id="location">📍 Calgary, Alberta</p>
-                </div>  
-            </section>
+  <!-- Additional SEO Meta Tags -->
+  <meta name="keywords" content="software developer, data analyst, tech professional, Calgary, Canada, portfolio" />
+  <meta name="author" content="Aldo Ortiz" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aldo140.github.io/DigitalResume/" />
 
-            <section class="section--page">
-                <div id="socials--list">
-                    <a href="https://github.com/Aldo140" target="_blank">Github</a>
-                    <a href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank">LinkedIn</a>
-                    <a href="./assets/resume.pdf" target="_blank">Download Resume</a>
-                </div>
-            </section>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="./src/styles/main.css?v=1.0.1" />
+  <link rel="stylesheet" href="./src/styles/theme-switcher.css?v=1.0.1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Scroll Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script src="src/js/mobile-menu.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Aldo Ortiz",
+      "url": "https://aldo140.github.io/DigitalResume/",
+      "image": "./assets/images/headshots.jfif",
+      "sameAs": [
+        "https://github.com/Aldo140",
+        "https://www.linkedin.com/in/aldo-ortiz14/"
+      ],
+      "jobTitle": "Software Developer & Data Analyst",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "VeriPark"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Calgary",
+        "addressCountry": "CA"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <button class="hamburger-menu" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-overlay"></div>
+      <div class="nav-links">
+        <a href="#about"><i class="fas fa-user"></i> About</a>
+        <a href="#tech"><i class="fas fa-code"></i> Tech</a>
+        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+        <a href="#work"><i class="fas fa-briefcase"></i> Work</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Theme Switcher -->
+  <div id="theme-switcher" aria-label="Theme toggle">
+    <div class="theme" id="theme-light" data-theme="light" title="Light Mode"></div>
+    <div class="theme" id="theme-dark" data-theme="dark" title="Dark Mode"></div>
+  </div>
+
+  <!-- Main Container -->
+  <main id="container--main">
+    <!-- HERO / PROFILE -->
+    <section id="wrapper--hero" class="section--page hero-custom">
+      <div class="profile-section">
+        <img id="profile-pic" src="./assets/images/headshots.jfif" alt="Aldo Ortiz" />
+      </div>
+      <div class="hero-text">
+        <h1 id="user-name">Aldo Ortiz</h1>
+        <p id="bio">
+          Innovative data analyst and software developer with a passion for financial technology.
+          Leveraging computer information systems expertise to drive data-driven solutions and technological innovation.
+        </p>
+        <div class="hero-social-buttons">
+          <a href="https://github.com/Aldo140" target="_blank" class="btn-glow"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank" class="btn-glow"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="./assets/resume.pdf" target="_blank" class="btn-glow"><i class="fas fa-file-pdf"></i> Resume</a>
+        </div>
+      </div>
+    </section>
+      
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section--page">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I'm a passionate software developer and data analyst with a strong foundation in computer information systems. My journey in tech has been driven by a desire to create innovative solutions that make a difference.</p>
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-graduation-cap"></i>
+              <h3>Education</h3>
+              <p>Computer Information Systems at Mount Royal University</p>
+            </div>
             
-            <section class="section--page">
-                <h2>Tech Stack</h2>
-
-                <div id="wrapper--techstack__items">
-                    <div class="card--techstack"><span>Python, JavaScript, SQL</span></div>
-                    <div class="card--techstack"><span>Pandas, NumPy, Matplotlib</span></div>
-                    <div class="card--techstack"><span>HTML, CSS, React</span></div>
-                    <div class="card--techstack"><span>MySQL, MongoDB</span></div>
-                </div>
-            </section>
-
-            <section class="section--page">
-                <h2>Core Qualifications</h2>
-                <ul id="qualifications--list">
-                    <li>✔️ Coding Languages: Java, HTML, CSS, JavaScript, Python, .NET, Azure</li>
-                    <li>✔️ Data Analysis: MySQL, NoSQL, data queries, data integration, data structure</li>
-                    <li>✔️ Strong interpersonal communication skills, enhancing client satisfaction and business growth</li>
-                    <li>✔️ Experienced in Customer Relationship Management (CRM) systems and stakeholder relationship building</li>
-                </ul>
-            </section>
-
-            <section class="section--page">
-                <h2>Education</h2>
-                <p><strong>Bachelor of Computer Information Systems</strong><br>Mount Royal University, Calgary, AB (Sept 2021 - Present)<br>Minor in Finance and Economics</p>
-                <p><strong>European Innovation Academy</strong><br>University of Porto, Portugal (2020)<br>Led a cross-functional team to develop a startup from concept to functional product in 15 days.</p>
-            </section>
-
-            <section class="section--page">
-                <h2>Work History</h2>
-
-                <div class="card--work-history">
-                    <strong>🚧 Co-op/Intern, Service Delivery Analyst | QuadReal Property Group</strong>
-                    <p>2024</p>
-                    <p>Managed and resolved IT issues both remotely and on-site, utilizing MS Office tools.</p>
-                    <ul>
-                        <li>Documented user inquiries and incidents for timely escalation and resolution.</li>
-                        <li>Maintained high user satisfaction through thorough investigation of technical issues.</li>
-                        <li>Facilitated cross-departmental collaboration to address complex issues.</li>
-                    </ul>
-                </div>
-
-                <div class="line-break"></div>
-
-                <div class="card--work-history">
-                    <strong>🚧 Customer Experience/Sales Representative | Neo Financial</strong>
-                    <p>June 2021 - September 2023</p>
-                    <p>Spearheaded sales initiatives within a nationwide team, consistently surpassing sales targets.</p>
-                    <ul>
-                        <li>Provided personalized service to clients navigating complex financial systems.</li>
-                        <li>Developed expertise in sales software and troubleshooting technical issues.</li>
-                        <li>Guided clients through the onboarding process, enhancing their overall experience.</li>
-                    </ul>
-                </div>
-
-                <div class="line-break"></div>
-
-                <div class="card--work-history">
-                    <strong>🚧 Business Analyst - Digital Banking | VeriPark</strong>
-                    <p>2024 - Present</p>
-                    <p>Contributed to the digital transformation of financial institutions by analyzing and documenting business requirements.</p>
-                    <ul>
-                        <li>Attended requirements gathering meetings to understand client needs and business objectives.</li>
-                        <li>Wrote comprehensive Business Requirement Documents, ensuring clarity and alignment with project goals.</li>
-                        <li>Mapped requirements to relevant modules and features, providing detailed business analysis.</li>
-                        <li>Defined business requirements, identifying problems and opportunities for improved business processes.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section--page">
-                <h2>Class Projects</h2>
-                <ul id="projects--list">
-                    <li>Developed a Python app with MongoDB and MySQL for retail data mining, applying regression and clustering for predictive modeling.</li>
-                    <li>Designed Java inventory software with MySQL and NoSQL, utilizing regression and clustering for supply chain optimization.</li>
-                    <li>Created an HTML/CSS/JS web app for real estate analysis with MongoDB, applying regression and clustering for property value prediction.</li>
-                    <li>Implemented Python sentiment analysis with MongoDB for social media trend prediction and user grouping.</li>
-                </ul>
-            </section>
-
-            <section class="section--page">
-                <h2>Projects & Accomplishments</h2>
-
-                <div class="card--project">
-                    <a href="project1.html"><span>🏆 </span>Personal Finance Tracker App</a>
-                </div>
-
-                <div class="card--project">
-                    <a href="cto-european-energy-company.html"><span>🏆 </span>CTO of European Energy Company</a>
-                </div>
-
-                <div class="card--project">
-                    <a href="project1.html"><span>🏆 </span>Web Development Portfolio</a>
-                </div>
-
-                <!-- Add more projects as necessary -->
-            </section>
-
+            <div class="highlight-item">
+              <i class="fas fa-code"></i>
+              <h3>Specialization</h3>
+              <p>Full-stack development, Data Analysis, Financial Technology</p>
+            </div>
+            
+            <div class="highlight-item">
+              <i class="fas fa-globe"></i>
+              <h3>Location</h3>
+              <p>Calgary, Canada</p>
+            </div>
+          </div>
         </div>
-        <div id="theme-switcher">
-            <div class="theme" id="theme-light" data-theme="light"></div>
-            <div class="theme" id="theme-dark" data-theme="dark"></div>
+        
+        <div class="about-skills">
+          <h3>Core Competencies</h3>
+          <ul>
+            <li>Data Analysis & Visualization</li>
+            <li>Full-stack Development</li>
+            <li>Financial Technology</li>
+            <li>Agile Methodologies</li>
+            <li>Problem Solving</li>
+            <li>Team Collaboration</li>
+          </ul>
         </div>
-    </body>
-    <script src="js/theme-switcher.js"></script>
+      </div>
+    </section>
+      
+    <!-- SOCIAL LINKS -->
+    <section class="section--page" id="social-buttons">
+      <div class="social-buttons">
+        <a href="https://github.com/Aldo140" target="_blank" class="btn-glow"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank" class="btn-glow"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="./assets/resume.pdf" target="_blank" class="btn-glow"><i class="fas fa-file-pdf"></i> Resume</a>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="tech" class="section--page">
+      <h2>Tech Stack</h2>
+      <div id="wrapper--techstack__items">
+        <div class="card--techstack">Python</div>
+        <div class="card--techstack">JavaScript</div>
+        <div class="card--techstack">SQL</div>
+        <div class="card--techstack">Pandas</div>
+        <div class="card--techstack">React</div>
+        <div class="card--techstack">MongoDB</div>
+        <div class="card--techstack">MySQL</div>
+        <div class="card--techstack">HTML/CSS</div>
+        <div class="card--techstack">C++</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section--page">
+      <h2>Featured Projects</h2>
+      <div class="card--project"><a href="project1.html">🏆 Personal Finance Tracker App</a></div>
+      <div class="card--project"><a href="cto-european-energy-company.html">🏆 CTO of European Energy Startup</a></div>
+      <div class="card--project"><a href="project1.html">🏆 Web Dev Portfolio</a></div>
+    </section>
+
+    <!-- WORK HISTORY -->
+    <section id="work" class="section--page">
+      <h2>Experience</h2>
+      <div class="card--work-history">
+        <strong>Business Analyst | VeriPark</strong><br />
+        <p>2024 - Present</p>
+        <ul>
+          <li>Delivered requirement docs for enterprise banking platforms</li>
+          <li>Collaborated with devs and stakeholders using agile methodology</li>
+        </ul>
+      </div>
+      <div class="card--work-history">
+        <strong>IT Co-op | QuadReal</strong><br />
+        <p>2024</p>
+        <ul>
+          <li>Resolved issues across hardware, software, and network environments</li>
+        </ul>
+      </div>
+      <div class="card--work-history">
+        <strong>Customer Experience | Neo Financial</strong><br />
+        <p>2021 - 2023</p>
+        <ul>
+          <li>Helped users through onboarding and fintech troubleshooting</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="section--page">
+      <h2>Get in Touch</h2>
+      <p>Open to roles in data, dev, or tech strategy. Send me a message below 👇</p>
+      
+      <form id="contact-form" action="https://formspree.io/f/xkgjrqno" method="POST">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
+          <span class="error-message">Please enter your name</span>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" autocomplete="email" required />
+          <span class="error-message">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="Your Message" autocomplete="off" required></textarea>
+          <span class="error-message">Please enter your message</span>
+        </div>
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+      
+      <div id="form-status" style="margin-top: 1em;"></div>
+    </section>
+  </main>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <p>Built by Aldo Ortiz • Inspired by real dev portfolios • <a href="https://github.com/Aldo140/DigitalResume" target="_blank">Source</a></p>
+  </footer>
+
+  <!-- JS -->
+  <script src="src/js/theme-switcher.js"></script>
+  <script src="src/js/gsap-animations.js"></script>
+  <script src="src/js/form-handler.js"></script>
+</body>
 </html>

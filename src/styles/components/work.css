@@ -1,0 +1,107 @@
+/* WORK HISTORY */
+#work h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+}
+
+#work h2::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--mainLinkColor);
+}
+
+.card--work-history {
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mainBorderColor);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.card--work-history:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.card--work-history strong {
+  font-size: 1.1rem;
+  color: var(--mainTextColor);
+  font-weight: 600;
+}
+
+.card--work-history p {
+  color: var(--mainLinkColor);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.card--work-history ul {
+  padding-left: 1.2rem;
+  margin-top: 0.5em;
+}
+
+.card--work-history li {
+  color: var(--secondaryTextColor);
+  font-size: 0.95em;
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+
+.card--work-history li::marker {
+  color: var(--mainLinkColor);
+  font-size: 1.1em;
+}
+
+.card--work-history:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #work h2 {
+    font-size: 1.6rem;
+  }
+  
+  .card--work-history strong {
+    font-size: 1rem;
+  }
+  
+  .card--work-history p {
+    font-size: 0.85rem;
+  }
+  
+  .card--work-history li {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  #work h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card--work-history {
+    margin-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+  
+  .card--work-history strong {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  .card--work-history ul {
+    padding-left: 1rem;
+  }
+  
+  .card--work-history li {
+    font-size: 0.85em;
+  }
+} 
