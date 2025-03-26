@@ -36,11 +36,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
 
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="./src/js/mobile-menu.js" as="script" />
+  <link rel="preload" href="./src/js/theme-switcher.js" as="script" />
+  <link rel="preload" href="./src/js/gsap-animations.js" as="script" />
+  <link rel="preload" href="./src/js/form-handler.js" as="script" />
+
   <!-- Scroll Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-  <script src="src/js/mobile-menu.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
+  <script src="src/js/mobile-menu.js" defer></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -244,8 +250,21 @@
   </footer>
 
   <!-- JS -->
-  <script src="src/js/theme-switcher.js"></script>
-  <script src="src/js/gsap-animations.js"></script>
-  <script src="src/js/form-handler.js"></script>
+  <script src="src/js/theme-switcher.js" defer></script>
+  <script src="src/js/gsap-animations.js" defer></script>
+  <script src="src/js/form-handler.js" defer></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('ServiceWorker registration successful');
+        }).catch(err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
