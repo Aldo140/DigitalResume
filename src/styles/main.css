@@ -769,54 +769,7 @@ nav {
 }
 
 .social-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-top: 2rem;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 1;
-}
-
-.social-buttons a {
-  flex: 1 1 200px;
-  max-width: 250px;
-  text-align: center;
-  background-color: var(--btnBg);
-  color: var(--btnText);
-  padding: 1em 1.5em;
-  border-radius: 12px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8em;
-  border: 1px solid var(--mainBorderColor);
-  font-size: 1.1em;
-  position: relative;
-  overflow: hidden;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none;
-}
-
-.social-buttons a i {
-  font-size: 1.2rem;
-  display: inline-block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.social-buttons a:hover {
-  background-color: var(--mainLinkColor);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.social-buttons a:hover i {
-  color: #fff;
+  display: none;
 }
 
 /* SECTIONS */
@@ -992,10 +945,6 @@ footer a {
   #wrapper--hero {
     flex-direction: column;
     text-align: center;
-  }
-
-  .social-buttons {
-    justify-content: center;
   }
 
   #profile-pic {
@@ -2067,7 +2016,7 @@ html {
         gap: 1rem;
         width: 100%;
         max-width: 300px;
-        margin: 1.5rem auto 0;
+        margin: 1.5rem auto;
     }
 
     .hero-social-buttons .btn-glow {
