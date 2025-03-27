@@ -1,68 +1,60 @@
-// Hero entrance animation
-gsap.from("#profile-pic", {
-  duration: 0.8,
-  x: -50,
-  opacity: 0,
-  ease: "power2.out",
-  delay: 0.2
+// iOS detection (optional, fallback)
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+// Ensure visibility before animating
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.invisible-before-load').forEach(el => {
+    el.classList.add('visible');
+  });
 });
 
-gsap.from("#user-name", {
-  duration: 0.8,
-  y: 20,
-  opacity: 0,
-  ease: "power2.out",
-  delay: 0.3
-});
+document.addEventListener('DOMContentLoaded', () => {
+  if (!isIOS) {
+    requestAnimationFrame(() => {
+      // Hero animations
+      gsap.from("#profile-pic", {
+        duration: 0.8,
+        x: -50,
+        opacity: 0,
+        ease: "power2.out",
+        delay: 0.2
+      });
 
-gsap.from("#bio", {
-  duration: 0.8,
-  y: 20,
-  opacity: 0,
-  ease: "power2.out",
-  delay: 0.4
-});
+      gsap.from("#user-name", {
+        duration: 0.8,
+        y: 20,
+        opacity: 0,
+        ease: "power2.out",
+        delay: 0.3
+      });
 
-// Contact info animations
-const contactElements = document.querySelectorAll("#email, #location");
-contactElements.forEach((element, index) => {
-  gsap.fromTo(element,
-    {
-      opacity: 0,
-      y: 20,
-      visibility: "visible"
-    },
-    {
-      duration: 0.5,
-      opacity: 1,
-      y: 0,
-      ease: "power2.out",
-      delay: 0.5 + (index * 0.1),
-      visibility: "visible",
-      clearProps: "all"
-    }
-  );
-});
+      gsap.from("#bio", {
+        duration: 0.8,
+        y: 20,
+        opacity: 0,
+        ease: "power2.out",
+        delay: 0.4
+      });
 
-// Social buttons animation with improved stability
-const socialButtons = document.querySelectorAll(".social-buttons a");
-socialButtons.forEach((button, index) => {
-  gsap.fromTo(button,
-    {
-      opacity: 0,
-      y: 20,
-      visibility: "visible"
-    },
-    {
-      duration: 0.5,
-      opacity: 1,
-      y: 0,
-      ease: "power2.out",
-      delay: 0.7 + (index * 0.1),
-      visibility: "visible",
-      clearProps: "all"
-    }
-  );
+      const socialButtons = document.querySelectorAll(".hero-social-buttons a");
+      socialButtons.forEach((button, index) => {
+        gsap.fromTo(button,
+          {
+            opacity: 0,
+            y: 20
+          },
+          {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            delay: 0.7 + (index * 0.1),
+            clearProps: "all"
+          }
+        );
+      });
+    });
+  }
 });
 
 // Scroll Progress Indicator
@@ -98,23 +90,18 @@ sections.forEach((section, index) => {
   );
 });
 
-// Content Loading Animation
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section--page');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '50px'
-    });
-
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+// Content Reveal on Viewport
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '50px'
 });
 
+sections.forEach(section => {
+  observer.observe(section);
+});

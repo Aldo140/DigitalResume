@@ -6,84 +6,52 @@
   <title>Aldo Ortiz | Developer & Analyst</title>
   <meta name="description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- Open Graph / Facebook -->
+
+  <script>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  </script>
+
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aldo140.github.io/DigitalResume/" />
   <meta property="og:title" content="Aldo Ortiz | Developer & Analyst" />
   <meta property="og:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
   <meta property="og:image" content="./assets/images/headshots.jfif" />
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://aldo140.github.io/DigitalResume/" />
   <meta property="twitter:title" content="Aldo Ortiz | Developer & Analyst" />
   <meta property="twitter:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
   <meta property="twitter:image" content="./assets/images/headshots.jfif" />
 
-  <!-- Additional SEO Meta Tags -->
   <meta name="keywords" content="software developer, data analyst, tech professional, Calgary, Canada, portfolio" />
   <meta name="author" content="Aldo Ortiz" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://aldo140.github.io/DigitalResume/" />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
-  <!-- STYLES -->
   <link rel="stylesheet" href="./src/styles/main.css?v=1.0.1" />
   <link rel="stylesheet" href="./src/styles/theme-switcher.css?v=1.0.1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- Preload Critical Resources -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
+
   <link rel="preload" href="./src/js/mobile-menu.js" as="script" />
   <link rel="preload" href="./src/js/theme-switcher.js" as="script" />
   <link rel="preload" href="./src/js/gsap-animations.js" as="script" />
   <link rel="preload" href="./src/js/form-handler.js" as="script" />
-
-  <!-- Scroll Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
-  <script src="src/js/mobile-menu.js" defer></script>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Aldo Ortiz",
-      "url": "https://aldo140.github.io/DigitalResume/",
-      "image": "./assets/images/headshots.jfif",
-      "sameAs": [
-        "https://github.com/Aldo140",
-        "https://www.linkedin.com/in/aldo-ortiz14/"
-      ],
-      "jobTitle": "Software Developer & Data Analyst",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "VeriPark"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Calgary",
-        "addressCountry": "CA"
-      }
-    }
-  </script>
 </head>
 <body>
-  <!-- Scroll Progress Indicator -->
   <div class="scroll-progress"></div>
 
-  <!-- Navigation -->
   <nav>
     <div class="nav-container">
       <button class="hamburger-menu" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
       <div class="nav-overlay"></div>
       <div class="nav-links">
@@ -96,53 +64,53 @@
     </div>
   </nav>
 
-  <!-- Theme Switcher -->
   <div id="theme-switcher" aria-label="Theme toggle">
     <div class="theme" id="theme-light" data-theme="light" title="Light Mode"></div>
     <div class="theme" id="theme-dark" data-theme="dark" title="Dark Mode"></div>
   </div>
 
-  <!-- Main Container -->
   <main id="container--main">
-    <!-- HERO / PROFILE -->
+    <!-- HERO SECTION -->
     <section id="wrapper--hero" class="section--page hero-custom">
       <div class="profile-section">
-        <img id="profile-pic" src="./assets/images/headshots.jfif" alt="Aldo Ortiz" />
+        <div class="profile-image-container">
+          <img id="profile-pic" class="invisible-before-load" src="./assets/images/headshots.jfif" alt="Aldo Ortiz" />
+        </div>
       </div>
       <div class="hero-text">
-        <h1 id="user-name">Aldo Ortiz</h1>
-        <p id="bio">
+        <h1 id="user-name" class="invisible-before-load">Aldo Ortiz</h1>
+        <p id="bio" class="invisible-before-load">
           Innovative data analyst and software developer with a passion for financial technology.
           Leveraging computer information systems expertise to drive data-driven solutions and technological innovation.
         </p>
-        <div class="hero-social-buttons">
+        <div class="hero-social-buttons invisible-before-load">
           <a href="https://github.com/Aldo140" target="_blank" class="btn-glow"><i class="fab fa-github"></i> GitHub</a>
           <a href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank" class="btn-glow"><i class="fab fa-linkedin"></i> LinkedIn</a>
           <a href="./assets/resume.pdf" target="_blank" class="btn-glow"><i class="fas fa-file-pdf"></i> Resume</a>
         </div>
       </div>
     </section>
-      
+
     <!-- ABOUT SECTION -->
     <section id="about" class="section--page">
       <h2>About Me</h2>
       <div class="about-content">
         <div class="about-text">
           <p>I'm a passionate software developer and data analyst with a strong foundation in computer information systems. My journey in tech has been driven by a desire to create innovative solutions that make a difference.</p>
-          
+
           <div class="about-highlights">
             <div class="highlight-item">
               <i class="fas fa-graduation-cap"></i>
               <h3>Education</h3>
               <p>Computer Information Systems at Mount Royal University</p>
             </div>
-            
+
             <div class="highlight-item">
               <i class="fas fa-code"></i>
               <h3>Specialization</h3>
               <p>Full-stack development, Data Analysis, Financial Technology</p>
             </div>
-            
+
             <div class="highlight-item">
               <i class="fas fa-globe"></i>
               <h3>Location</h3>
@@ -150,7 +118,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="about-skills">
           <h3>Core Competencies</h3>
           <ul>
@@ -220,7 +188,7 @@
     <section id="contact" class="section--page">
       <h2>Get in Touch</h2>
       <p>Open to roles in data, dev, or tech strategy. Send me a message below 👇</p>
-      
+
       <form id="contact-form" action="https://formspree.io/f/xkgjrqno" method="POST">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
@@ -236,32 +204,29 @@
         </div>
         <button type="submit" class="cta-button">Send Message</button>
       </form>
-      
+
       <div id="form-status" style="margin-top: 1em;"></div>
     </section>
   </main>
 
-  <!-- Scroll to Top Button -->
   <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
 
-  <!-- Footer -->
   <footer>
     <p>Built by Aldo Ortiz • Inspired by real dev portfolios • <a href="https://github.com/Aldo140/DigitalResume" target="_blank">Source</a></p>
   </footer>
 
-  <!-- JS -->
-  <script src="src/js/theme-switcher.js" defer></script>
-  <script src="src/js/gsap-animations.js" defer></script>
-  <script src="src/js/form-handler.js" defer></script>
+  <script src="./src/js/mobile-menu.js" defer></script>
+  <script src="./src/js/theme-switcher.js" defer></script>
+  <script src="./src/js/gsap-animations.js" defer></script>
+  <script src="./src/js/form-handler.js" defer></script>
 
-  <!-- Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').then(registration => {
-          console.log('ServiceWorker registration successful');
+        navigator.serviceWorker.register('sw.js').then(reg => {
+          console.log('Service worker registered');
         }).catch(err => {
-          console.log('ServiceWorker registration failed: ', err);
+          console.warn('Service worker registration failed:', err);
         });
       });
     }
