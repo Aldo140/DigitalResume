@@ -2,34 +2,34 @@ window.addEventListener("load", () => {
   console.log("✅ tech-toggle.js fully loaded");
 
   const toggleBtn = document.getElementById("toggle-techstack");
-  const techItems = document.querySelectorAll(".tech-items");
+  const hiddenBoxes = document.querySelectorAll(".hidden-box");
 
-  const isLargeScreen = window.innerWidth >= 769;
+  const isSmallScreen = window.innerWidth <= 768;
 
-  if (!toggleBtn || techItems.length === 0) {
-    // Quietly exit if the button or grids aren’t found
+  if (!toggleBtn || hiddenBoxes.length === 0) {
+    console.warn("⚠️ Toggle button or hidden boxes not found.");
     return;
   }
 
-  if (isLargeScreen) {
-    // Desktop/tablet: collapsed by default
-    techItems.forEach(grid => grid.classList.add("collapsed"));
+  if (isSmallScreen) {
+    // Start collapsed
+    hiddenBoxes.forEach(box => box.style.display = "none");
     toggleBtn.style.display = "inline-block";
     toggleBtn.setAttribute("aria-expanded", "false");
 
     toggleBtn.addEventListener("click", () => {
       const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
 
-      techItems.forEach(grid => {
-        grid.classList.toggle("collapsed", isExpanded);
+      hiddenBoxes.forEach(box => {
+        box.style.display = isExpanded ? "none" : "block";
       });
 
       toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
-      toggleBtn.textContent = isExpanded ? "See All" : "Collapse";
+      toggleBtn.textContent = isExpanded ? "View All" : "Collapse";
     });
   } else {
-    // Mobile: everything open, no toggle button
-    techItems.forEach(grid => grid.classList.remove("collapsed"));
+    // Desktop view — always show everything and hide the toggle button
+    hiddenBoxes.forEach(box => box.style.display = "block");
     toggleBtn.style.display = "none";
   }
 });

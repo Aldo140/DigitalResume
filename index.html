@@ -137,94 +137,182 @@
       </div>
     </section>
 
- <!-- TECH STACK (Mobile-First Focus) -->
+<!-- TECH STACK (Responsive + Collapsible) -->
 <section id="tech" class="section--page">
   <h2>Tech I Use</h2>
+  <div class="tech-grid-wrapper">
 
-  <div class="tech-category">
-    <h3>Frontend</h3>
-    <ul class="tech-mobile-list">
-      <li>HTML/CSS</li>
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>Next.js</li>
-      <li>Tailwind</li>
-      <li>TypeScript</li>
-    </ul>
+    <!-- Box 1 -->
+    <div class="tech-category tech-items">
+      <h3>Programming Languages</h3>
+      <ul>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>.NET</li>
+      </ul>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="tech-category tech-items">
+      <h3>Libraries & Frameworks</h3>
+      <ul>
+        <li>React</li>
+        <li>Flask</li>
+        <li>Django</li>
+        <li>Express</li>
+      </ul>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="tech-category tech-items">
+      <h3>Data Analysis</h3>
+      <ul>
+        <li>Pandas</li>
+        <li>NumPy</li>
+        <li>Matplotlib</li>
+        <li>Seaborn</li>
+        <li>Scikit-Learn</li>
+        <li>TensorFlow</li>
+      </ul>
+    </div>
+
+    <!-- Box 4 -->
+    <div class="tech-category tech-items">
+      <h3>Database Management</h3>
+      <ul>
+        <li>MySQL</li>
+        <li>MongoDB</li>
+        <li>PostgreSQL</li>
+        <li>SQLite</li>
+        <li>Google Cloud SQL</li>
+      </ul>
+    </div>
+
+    <!-- Box 5 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Cloud Services & DevOps</h3>
+      <ul>
+        <li>AWS</li>
+        <li>Azure</li>
+        <li>Firebase</li>
+        <li>Docker</li>
+        <li>Jenkins</li>
+        <li>GitHub Actions</li>
+      </ul>
+    </div>
+
+    <!-- Box 6 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Networking & IT Tools</h3>
+      <ul>
+        <li>TCP/IP</li>
+        <li>Active Directory</li>
+        <li>Azure AD</li>
+        <li>Wireshark</li>
+        <li>Nmap</li>
+        <li>Kali Linux</li>
+      </ul>
+    </div>
+
+    <!-- Box 7 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Web Development</h3>
+      <ul>
+        <li>Node.js</li>
+        <li>REST APIs</li>
+        <li>AJAX</li>
+        <li>JSON</li>
+      </ul>
+    </div>
+
+    <!-- Box 8 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Machine Learning & AI</h3>
+      <ul>
+        <li>Scikit-Learn</li>
+        <li>TensorFlow</li>
+        <li>Keras</li>
+        <li>NLP</li>
+      </ul>
+    </div>
+
+    <!-- Box 9 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Cybersecurity</h3>
+      <ul>
+        <li>Metasploit</li>
+        <li>Nessus</li>
+        <li>Burp Suite</li>
+        <li>OWASP ZAP</li>
+      </ul>
+    </div>
+
+    <!-- Box 10 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Version Control</h3>
+      <ul>
+        <li>Git</li>
+        <li>GitHub</li>
+        <li>GitLab</li>
+      </ul>
+    </div>
+
+    <!-- Box 11 -->
+    <div class="tech-category tech-items hidden-box">
+      <h3>Automation & Scripting</h3>
+      <ul>
+        <li>PowerShell</li>
+        <li>Bash</li>
+        <li>Python scripting</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="tech-category">
-    <h3>Backend</h3>
-    <ul class="tech-mobile-list">
-      <li>Node.js</li>
-      <li>Express</li>
-      <li>MongoDB</li>
-      <li>MySQL</li>
-      <li>Firebase</li>
-      <li>PostgreSQL</li>
-    </ul>
-  </div>
-
-  <div class="tech-category">
-    <h3>Data & ML</h3>
-    <ul class="tech-mobile-list">
-      <li>Python</li>
-      <li>Pandas</li>
-      <li>Scikit-Learn</li>
-      <li>TensorFlow</li>
-      <li>Image Processing (OpenCV)</li>
-      <li>Training Datasets</li>
-    </ul>
-  </div>
-
-  <div class="tech-category">
-    <h3>Tools</h3>
-    <ul class="tech-mobile-list">
-      <li>Docker</li>
-      <li>Git</li>
-      <li>GitHub</li>
-      <li>VS Code</li>
-      <li>Postman</li>
-      <li>Figma</li>
-    </ul>
+  <!-- View All Button -->
+  <div class="techstack-toggle-controls">
+    <button id="toggle-techstack" class="btn-toggle" aria-expanded="false">View All</button>
   </div>
 </section>
 
 
+
+
+
+
+<!-- Marquee Scroller -->
 <div class="marquee-wrapper">
   <div class="marquee-track">
     <div class="marquee-content">
       <span>Python</span>
-      <span>Java</span>
       <span>JavaScript</span>
       <span>React</span>
-      <span>Next.js</span>
-      <span>Tailwind</span>
-      <span>TypeScript</span>
-      <span>SQL</span>
       <span>Node.js</span>
-      <span>Firebase</span>
-      <span>Pandas</span>
-      <span>Scikit-Learn</span>
+      <span>Django</span>
       <span>TensorFlow</span>
-      <span>OpenCV</span>
-      <span>Docker</span>
-      <span>Git</span>
+      <span>MongoDB</span>
+      <span>MySQL</span>
+      <span>GitHub</span>
+      <span>AWS</span>
       <span>PostgreSQL</span>
-      <span>Figma</span>
-      <!-- Duplicate for smooth loop -->
-      <span>Python</span>
+      <span>Seaborn</span>
+      <span>Docker</span>
+      <span>Flask</span>
       <span>Java</span>
+      <span>Kali Linux</span>
+      <span>Figma</span>
+      <!-- Repeat for infinite loop -->
+      <span>Python</span>
       <span>JavaScript</span>
       <span>React</span>
-      <span>Next.js</span>
-      <span>Tailwind</span>
-      <span>TypeScript</span>
-      <span>SQL</span>
       <span>Node.js</span>
+      <span>Django</span>
     </div>
   </div>
 </div>
+
 
 
 
