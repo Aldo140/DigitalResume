@@ -54,3 +54,58 @@
     }
   }
   
+  .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--contactBg); /* consistent with your cards */
+    padding: 0.75rem 0;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 255, 150, 0.05); /* subtle glow */
+    border: 1px solid var(--contactBorder);
+    margin-top: 2.5rem;
+  }
+  
+  .marquee-track {
+    display: flex;
+    animation: scroll-marquee 20s linear infinite;
+    will-change: transform;
+  }
+  
+  .marquee-content {
+    display: flex;
+    gap: 3rem;
+    flex-shrink: 0;
+    padding: 0 1rem;
+  }
+  
+  .marquee-content span {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--heroAccent);
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+  
+  /* Animation */
+  @keyframes scroll-marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .marquee-content span {
+      font-size: 0.85rem;
+    }
+  
+    .marquee-track {
+      animation-duration: 15s;
+    }
+  }
+  
