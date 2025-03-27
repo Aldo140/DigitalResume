@@ -14,7 +14,8 @@ const urlsToCache = [
   `${basePath}src/js/gsap-animations.js`,
   `${basePath}src/js/form-handler.js`,
   `${basePath}assets/images/headshots.jfif`,
-  `${basePath}assets/images/favicon.png`
+  `${basePath}assets/images/favicon.png`,
+  `${basePath}offline.html`
 ];
 
 // Install Service Worker
@@ -44,20 +45,18 @@ self.addEventListener('activate', event => {
 // Fetch Event Strategy (Cache First)
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request).then(networkResponse => {
-        if (
-          !networkResponse ||
-          networkResponse.status !== 200 ||
-          networkResponse.type !== 'basic'
-        ) {
-          return networkResponse;
+    caches.match(event.request).then(response => {
+      // Return from cache if available
+      if (response) return response;
+
+      // Otherwise fetch from network
+      return fetch(event.request).catch(() => {
+        // If it's a navigation request (HTML page), show offline fallback
+        if (event.request.destination === 'document') {
+          return caches.match(`${basePath}offline.html`);
         }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-        return networkResponse;
-      }))
+      });
+    })
   );
 });
+
