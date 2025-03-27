@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Sentiment Analysis | Aldo Ortiz</title>
+  <meta name="description" content="Sentiment analysis machine learning app built using Python, MongoDB, and TensorFlow." />
+
+  <!-- Embedded Styles -->
+  <style>
+    :root {
+      --bgLight: #f9f9f9;
+      --bgDark: #121212;
+      --textLight: #2c2c2c;
+      --textDark: #eaeaea;
+      --accent: #00ffc8;
+      --accentDark: #00e6b0;
+    }
+
+    [data-theme="light"] {
+      background-color: var(--bgLight);
+      color: var(--textLight);
+    }
+
+    [data-theme="dark"] {
+      background-color: var(--bgDark);
+      color: var(--textDark);
+    }
+
+    body {
+      font-family: 'Readex Pro', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 2.5rem 1.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .project-page-container {
+      max-width: 820px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .subheading {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .project-section {
+      margin-bottom: 2.2rem;
+    }
+
+    .project-section h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-section ul {
+      padding-left: 1.4rem;
+    }
+
+    .project-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 0.6rem 1.4rem;
+      margin-top: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--accentDark);
+    }
+
+    .back-link {
+      margin-bottom: 2rem;
+    }
+
+    .back-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    .project-footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+
+  <!-- Favicon & Theme Setup -->
+  <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
+  <script>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  </script>
+
+  <!-- Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+</head>
+
+<body>
+  <div class="project-page-container">
+
+    <div class="back-link">
+      <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+    <header>
+      <h1>Social Media Sentiment Analysis</h1>
+      <p class="subheading">Python • Machine Learning • TensorFlow • MongoDB</p>
+    </header>
+
+    <section class="project-section">
+      <h2>Project Overview</h2>
+      <p>
+        This machine learning project analyzes social media posts to determine sentiment using natural language processing (NLP). Built in Python and powered by TensorFlow, it collects, classifies, and visualizes public sentiment in real-time.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Technical Stack</h2>
+      <ul>
+        <li>Used Python’s NLTK and SpaCy for data preprocessing and tokenization</li>
+        <li>Built and trained a neural network using TensorFlow and Keras</li>
+        <li>Stored scraped posts and prediction results in MongoDB</li>
+        <li>Achieved over 85% classification accuracy on validation data</li>
+        <li>Visualized sentiment trends using Matplotlib and Seaborn</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Use Case</h2>
+      <p>
+        This tool is useful for analyzing audience sentiment during marketing campaigns, product launches, or news events. It was tested using data scraped from Reddit and X (formerly Twitter).
+      </p>
+    </section>
+
+    <footer class="project-footer">
+      <p>Built for learning, but with real-world impact. This project helped strengthen my NLP, Python scripting, and data pipeline design skills.</p>
+    </footer>
+  </div>
+</body>
+</html>

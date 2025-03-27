@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Mission to Market | Aldo Ortiz</title>
+  <meta name="description" content="Social enterprise program where Aldo Ortiz developed sustainable strategies for Calgary non-profits." />
+
+  <!-- Embedded Styles -->
+  <style>
+    :root {
+      --bgLight: #f9f9f9;
+      --bgDark: #121212;
+      --textLight: #2c2c2c;
+      --textDark: #eaeaea;
+      --accent: #00ffc8;
+      --accentDark: #00e6b0;
+      --cardBg: rgba(255, 255, 255, 0.04);
+    }
+
+    [data-theme="light"] {
+      background-color: var(--bgLight);
+      color: var(--textLight);
+    }
+
+    [data-theme="dark"] {
+      background-color: var(--bgDark);
+      color: var(--textDark);
+    }
+
+    body {
+      font-family: 'Readex Pro', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 2.5rem 1.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .project-page-container {
+      max-width: 820px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .subheading {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .project-section {
+      margin-bottom: 2.2rem;
+    }
+
+    .project-section h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-section ul {
+      padding-left: 1.4rem;
+    }
+
+    .project-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 0.6rem 1.4rem;
+      margin-top: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--accentDark);
+    }
+
+    .back-link {
+      margin-bottom: 2rem;
+    }
+
+    .back-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+
+    .project-footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+
+  <!-- Favicon & Theme Setup -->
+  <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
+  <script>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  </script>
+
+  <!-- Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+</head>
+
+<body>
+  <div class="project-page-container">
+
+    <div class="back-link">
+      <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+    <header>
+      <h1>Mission to Market Program</h1>
+      <p class="subheading">Hackathon • Non-Profit Strategy • Calgary-Based Social Enterprise</p>
+    </header>
+
+    <section class="project-section">
+      <h2>Program Summary</h2>
+      <p>
+        Mission to Market was a collaborative business hackathon focused on building sustainable business strategies for local Calgary non-profits. I worked alongside student leaders and business professionals to tackle real-world organizational challenges through market research and strategic planning.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>My Contributions</h2>
+      <ul>
+        <li>Analyzed the needs and goals of <strong>Starling Community</strong>, a Calgary-based non-profit</li>
+        <li>Conducted competitor and financial analysis for community programs</li>
+        <li>Worked on a revenue-generation strategy tailored for a donation-based model</li>
+        <li>Presented findings and solutions to a panel of judges and stakeholders</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Organization Website</h2>
+      <p>Learn more about the organization we supported during the program:</p>
+      <a href="https://www.starlings.ca" target="_blank" class="cta-button">
+        🌐 Visit Starling Community
+      </a>
+    </section>
+
+    <footer class="project-footer">
+      <p>This project highlighted my ability to bridge the gap between tech and community impact through practical business planning and research.</p>
+    </footer>
+  </div>
+</body>
+</html>

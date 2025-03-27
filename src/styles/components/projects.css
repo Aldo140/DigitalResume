@@ -1,0 +1,166 @@
+/* PROJECTS SECTION - Main Grid */
+#projects {
+    padding-top: 3rem;
+  }
+  
+  .projects-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card {
+    background: var(--contactBg);
+    border: 1px solid var(--contactBorder);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  }
+  
+  .project-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--nameColor);
+  }
+  
+  .project-card p {
+    margin: 0.5rem 0 1rem 0;
+    font-size: 0.95rem;
+    color: var(--textColor);
+  }
+  
+  .btn-read-more {
+    display: inline-block;
+    background: var(--heroAccent);
+    color: white;
+    font-weight: 500;
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.25s ease;
+  }
+  
+  .btn-read-more:hover {
+    background: var(--gradientEnd);
+  }
+  
+  /* Responsive project grid */
+  @media (min-width: 640px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* -------------------------------
+     PROJECT DETAIL PAGE STYLING
+  -------------------------------- */
+  
+  .project-detail-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem 1rem;
+  }
+  
+  .project-header {
+    margin-bottom: 2rem;
+  }
+  
+  .project-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--heroAccent);
+  }
+  
+  .project-tagline {
+    font-size: 1.05rem;
+    color: var(--textColor);
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--heroAccent);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  .back-link i {
+    margin-right: 0.4rem;
+  }
+  
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .project-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--contactBorder);
+  }
+  
+  .project-info h2 {
+    font-size: 1.25rem;
+    color: var(--nameColor);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--textColor);
+  }
+  
+  .project-info ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    list-style: none;
+    margin-top: 0.75rem;
+  }
+  
+  .tech-tags li {
+    background-color: var(--contactBg);
+    border: 1px solid var(--contactBorder);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .external-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--heroAccent);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .external-link:hover {
+    color: var(--gradientEnd);
+  }
+  
