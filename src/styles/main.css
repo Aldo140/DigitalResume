@@ -438,16 +438,17 @@ nav {
 }
 
 #bio {
-    color: var(--secondaryTextColor);
-    margin: 1.5em 0;
-    font-size: 1.2rem;
-    max-width: 500px;
-    position: relative;
-    padding-left: 1.8rem;
-    border-left: 2px solid var(--heroAccent);
-    transition: all 0.3s ease;
-    line-height: 1.6;
+  color: var(--mainTextColor); /* Primary color for body text */
+  margin: 1.5em 0;
+  font-size: 1.2rem;
+  max-width: 500px;
+  position: relative;
+  padding-left: 1.8rem;
+  border-left: 2px solid var(--heroAccent);
+  transition: all 0.3s ease;
+  line-height: 1.6;
 }
+
 
 #bio:hover {
     border-left-color: var(--gradientEnd);
