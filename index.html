@@ -7,6 +7,8 @@
   <meta name="description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="preload" as="image" href="./assets/images/headshots.jfif">
+  <link rel="stylesheet" href="./src/styles/components/tech.css" />
+
 
 
   <script>
@@ -135,21 +137,49 @@
       </div>
     </section>
 
-    <!-- TECH STACK -->
-    <section id="tech" class="section--page">
-      <h2>Tech Stack</h2>
-      <div id="wrapper--techstack__items">
-        <div class="card--techstack">Python</div>
-        <div class="card--techstack">JavaScript</div>
-        <div class="card--techstack">SQL</div>
-        <div class="card--techstack">Pandas</div>
-        <div class="card--techstack">React</div>
-        <div class="card--techstack">MongoDB</div>
-        <div class="card--techstack">MySQL</div>
-        <div class="card--techstack">HTML/CSS</div>
-        <div class="card--techstack">C++</div>
-      </div>
-    </section>
+   <!-- TECH STACK (Mobile-First Focus) -->
+<section id="tech" class="section--page">
+  <h2>Tech I Use</h2>
+
+  <div class="tech-category">
+    <h3>Frontend</h3>
+    <ul class="tech-mobile-list">
+      <li>HTML/CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Next.js</li>
+      <li>Tailwind</li>
+      <li>TypeScript</li>
+    </ul>
+  </div>
+
+  <div class="tech-category">
+    <h3>Backend</h3>
+    <ul class="tech-mobile-list">
+      <li>Node.js</li>
+      <li>Express</li>
+      <li>MongoDB</li>
+      <li>MySQL</li>
+      <li>Firebase</li>
+      <li>PostgreSQL</li>
+    </ul>
+  </div>
+
+  <div class="tech-category">
+    <h3>Data / Tools</h3>
+    <ul class="tech-mobile-list">
+      <li>Python</li>
+      <li>SQL</li>
+      <li>Pandas</li>
+      <li>Docker</li>
+      <li>Git</li>
+      <li>VS Code</li>
+    </ul>
+  </div>
+</section>
+
+
+
 
     <!-- PROJECTS -->
     <section id="projects" class="section--page">
@@ -221,6 +251,8 @@
   <script src="./src/js/theme-switcher.js" defer></script>
   <script src="./src/js/gsap-animations.js" defer></script>
   <script src="./src/js/form-handler.js" defer></script>
+  <script src="./src/js/tech-toggle.js" defer></script>
+
 
   <script>
     if ('serviceWorker' in navigator) {

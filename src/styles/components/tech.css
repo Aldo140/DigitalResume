@@ -1,0 +1,56 @@
+#tech {
+    padding-top: 3rem;
+  }
+  
+  .tech-category {
+    margin-bottom: 2.5rem;
+  }
+  
+  .tech-category h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--nameColor);
+    border-left: 4px solid var(--heroAccent);
+    padding-left: 0.75rem;
+  }
+  
+  .tech-mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  
+  .tech-mobile-list li {
+    background: var(--contactBg);
+    border: 1px solid var(--contactBorder);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .tech-mobile-list li:hover {
+    transform: scale(1.03);
+  }
+  
+  @media (min-width: 769px) {
+    .tech-mobile-list {
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+  
+    .tech-category h3 {
+      font-size: 1.4rem;
+    }
+  
+    .tech-mobile-list li {
+      font-size: 0.95rem;
+      padding: 0.7rem 1rem;
+    }
+  }
+  
