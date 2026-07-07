@@ -105,27 +105,65 @@
       </header>
 
       <div class="about-grid">
-        <div class="panel about-main reveal">
-          <div class="about-photo">
-            <img src="assets/images/headshot.jpg" alt="Aldo Ortiz" width="160" height="160" loading="lazy" />
-            <div class="mono photo-caption">FIG 1.0 — THE ANALYST</div>
+        <!-- ID badge -->
+        <div class="panel id-card reveal">
+          <div class="id-head mono"><span>SECURITY MASTER</span><span class="id-chip">AO</span></div>
+          <div class="id-photo">
+            <img src="assets/images/headshot.jpg" alt="Aldo Ortiz" width="300" height="300" loading="lazy" />
+            <span class="id-corner tl" aria-hidden="true"></span>
+            <span class="id-corner tr" aria-hidden="true"></span>
+            <span class="id-corner bl" aria-hidden="true"></span>
+            <span class="id-corner br" aria-hidden="true"></span>
+            <span class="id-scan" aria-hidden="true"></span>
           </div>
-          <div class="about-copy">
-            <p>
-              Computer Information Systems grad from Mount Royal University (Class of 2025, minor
-              in Finance &amp; Economics), currently leading a distributed
-              <strong>ML team at DEFEND</strong> building classification systems for a youth-safety
-              platform. Before that: field marketing leadership at Fresh Prep, enterprise IT at
-              QuadReal, and fintech operations at Neo Financial.
-            </p>
-            <p>
-              My edge is working both sides of the spread — I write the code <em>and</em> speak the
-              business. From CTO of a renewable-energy startup in Porto to a paid production website
-              for a Calgary restaurant, I bet on work where technical depth meets real-world value.
-              Fluent in English and Spanish; conversational French.
-            </p>
-          </div>
+          <dl class="id-meta mono">
+            <div><dt>NAME</dt><dd>ORTIZ, ALDO</dd></div>
+            <div><dt>CLASS</dt><dd>DEV × ANALYST</dd></div>
+            <div><dt>HQ</dt><dd>CALGARY, CA</dd></div>
+            <div><dt>LISTED</dt><dd>2001</dd></div>
+          </dl>
+          <div class="id-barcode" aria-hidden="true"></div>
+          <p class="id-serial mono">ISIN CA·AO·0140 — IDENTITY VERIFIED <span class="gain">✓</span></p>
         </div>
+
+        <!-- Interactive terminal -->
+        <div class="panel term reveal">
+          <div class="term-bar mono">
+            <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="term-title">aldo@calgary — ~/profile</span>
+            <span class="term-hint">INTERACTIVE · TRY “help”</span>
+          </div>
+          <div class="term-body mono" id="term-body" aria-live="polite"></div>
+          <form class="term-inputrow mono" id="term-form">
+            <label for="term-input" aria-hidden="true">$</label>
+            <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type a command — help, whoami, skills…" aria-label="Terminal command input" />
+          </form>
+        </div>
+
+        <!-- Analyst consensus -->
+        <div class="panel consensus reveal">
+          <h3 class="mono panel-title">ANALYST CONSENSUS</h3>
+          <div class="cons-bar mono" aria-hidden="true">
+            <span>SELL</span><span>HOLD</span><span>BUY</span><span class="cons-hot">STRONG&nbsp;HIRE</span>
+          </div>
+          <div class="cons-track" aria-hidden="true"><i class="cons-fill"></i><b class="cons-needle"></b></div>
+          <p class="cons-note mono"><span class="gain">12/12 ANALYSTS</span> — RATING: STRONG HIRE<br />PRICE TARGET: <span class="gain">RAISED</span> · RISK: LOW · UPSIDE: HIGH</p>
+        </div>
+
+        <!-- Fundamentals -->
+        <div class="panel fundamentals reveal">
+          <h3 class="mono panel-title">FUNDAMENTALS</h3>
+          <dl class="fund mono">
+            <div><dt>SECTOR</dt><dd>FINTECH × DATA × PRODUCT</dd></div>
+            <div><dt>EDU</dt><dd>B.C.I.S. — MRU ’25</dd></div>
+            <div><dt>MINOR</dt><dd>FINANCE &amp; ECONOMICS</dd></div>
+            <div><dt>CURRENT</dt><dd>ML TEAM LEAD — DEFEND</dd></div>
+            <div><dt>LANG</dt><dd>EN · ES · FR</dd></div>
+            <div><dt>STATUS</dt><dd class="gain">OPEN TO WORK ●</dd></div>
+          </dl>
+        </div>
+
+        <!-- Key metrics -->
         <div class="panel stats-panel reveal">
           <h3 class="mono panel-title">KEY METRICS</h3>
           <dl class="stats">

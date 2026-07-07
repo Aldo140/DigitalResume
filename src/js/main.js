@@ -348,6 +348,132 @@
       `<polygon points="0,${h} ${line} ${w},${h}" fill="rgba(255,176,32,0.07)"/></svg>`;
   });
 
+  /* ---------- interactive profile terminal ---------- */
+  const termBody = document.getElementById("term-body");
+  const termForm = document.getElementById("term-form");
+  const termInput = document.getElementById("term-input");
+  if (termBody && termForm && termInput) {
+    const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+    const print = (html, cls) => {
+      const div = document.createElement("div");
+      div.className = cls || "t-out";
+      div.innerHTML = html;
+      termBody.appendChild(div);
+      termBody.scrollTop = termBody.scrollHeight;
+    };
+    const printCmd = (cmd) => print(`<span class="t-dim">$</span> <span class="t-cmd">${esc(cmd)}</span>`);
+
+    const AO_ASCII =
+`   ▄▄▄   ▄▄▄▄
+  ██▀██ ██▀▀██
+  ██▄██ ██  ██
+  ██ ██ ██▄▄██
+  ▀▀ ▀▀  ▀▀▀▀   aldo@calgary`;
+
+    const termCmds = {
+      help: () =>
+        `<span class="t-dim">available commands:</span>
+whoami      about       skills      projects
+languages   education   contact     resume
+neofetch    sudo        clear       hire`,
+      whoami: () => `aldo.ortiz — developer &amp; analyst <span class="t-dim">(fintech × data × product)</span>`,
+      about: () =>
+        `B.C.I.S. grad, Mount Royal University — Class of 2025, minor in
+Finance &amp; Economics. Currently leading a distributed ML team at
+DEFEND building classification systems for a youth-safety platform.
+Previously: Fresh Prep (field marketing lead), QuadReal (enterprise
+IT), Neo Financial (fintech ops).
+
+<span class="t-dim">edge:</span> writes the code <span class="t-ok">AND</span> speaks the business.`,
+      skills: () => `PY ▲  JS ▲  BA ▲  SQL ▲  ML ▲  CLD ▲   <span class="t-dim">— full watchlist in section [02]</span>`,
+      projects: () => `MRUH  RIO  AMRN  CNRP  SENT  ALPH  M2M  TLO   <span class="t-dim">— 8 holdings in section [03]</span>`,
+      languages: () => `EN ████████ ADVANCED
+ES ████████ FLUENT
+FR █████░░░ INTERMEDIATE`,
+      education: () => `2020-2025  B.C.I.S. — Mount Royal University <span class="t-dim">(minor: Fin &amp; Econ)</span>
+2024       European Innovation Academy — U. Porto <span class="t-dim">(CTO, Amarna)</span>`,
+      contact: () => { document.querySelector("#contact")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" }); return `<span class="t-ok">→ opening contact…</span>`; },
+      resume: () => { window.open("assets/resume.pdf", "_blank"); return `<span class="t-ok">→ opening resume.pdf…</span>`; },
+      neofetch: () => `<span class="t-cmd">${esc(AO_ASCII)}</span>
+<span class="t-dim">OS:</span>      OrtizOS 25.04 LTS
+<span class="t-dim">Uptime:</span>  since 2001
+<span class="t-dim">Shell:</span>   fintech/bash
+<span class="t-dim">Stack:</span>   python · js · sql · tensorflow
+<span class="t-dim">Status:</span>  <span class="t-ok">OPEN TO WORK ●</span>`,
+      hire: () => { document.querySelector("#contact")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" }); return `<span class="t-ok">✓ ORDER FILLED — settle via contact form</span>`; },
+      sudo: (arg) =>
+        arg.includes("hire")
+          ? `<span class="t-ok">[sudo] permission granted — you clearly have good judgment.
+✓ routing you to the contact form…</span>`
+          : `<span class="t-err">aldo is not in the sudoers file. this incident will be reported.</span>`,
+      clear: () => { termBody.innerHTML = ""; return null; },
+    };
+    const runTermCmd = (raw) => {
+      const input = raw.trim();
+      if (!input) return;
+      printCmd(input);
+      const [cmd, ...rest] = input.toLowerCase().split(/\s+/);
+      const fn = termCmds[cmd];
+      if (fn) {
+        const out = fn(rest.join(" "));
+        if (out) print(out);
+        if (cmd === "sudo" && rest.join(" ").includes("hire"))
+          setTimeout(() => document.querySelector("#contact")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" }), 900);
+      } else {
+        print(`<span class="t-err">command not found: ${esc(cmd)}</span> <span class="t-dim">— try “help”</span>`);
+      }
+    };
+    termForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      runTermCmd(termInput.value);
+      termInput.value = "";
+    });
+    // clicking anywhere in the terminal focuses the input
+    termBody.addEventListener("click", () => termInput.focus());
+
+    // autoplay session on first scroll into view
+    const session = [
+      { cmd: "whoami", out: termCmds.whoami() },
+      { cmd: "cat about.txt", out: termCmds.about() },
+      { cmd: "languages --list", out: termCmds.languages() },
+    ];
+    const playSession = () => {
+      if (reduced) {
+        session.forEach((s) => { printCmd(s.cmd); print(s.out); });
+        print(`<span class="t-dim">— interactive: type “help” below —</span>`);
+        return;
+      }
+      let si = 0;
+      const nextCmd = () => {
+        if (si >= session.length) {
+          print(`<span class="t-dim">— interactive: type “help” below —</span>`);
+          return;
+        }
+        const s = session[si++];
+        let ci = 0;
+        const line = document.createElement("div");
+        line.innerHTML = `<span class="t-dim">$</span> <span class="t-cmd"></span>`;
+        termBody.appendChild(line);
+        const span = line.querySelector(".t-cmd");
+        const typer = setInterval(() => {
+          span.textContent = s.cmd.slice(0, ++ci);
+          termBody.scrollTop = termBody.scrollHeight;
+          if (ci >= s.cmd.length) {
+            clearInterval(typer);
+            setTimeout(() => { print(s.out); setTimeout(nextCmd, 650); }, 260);
+          }
+        }, 42);
+      };
+      nextCmd();
+    };
+    const tio = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      tio.disconnect();
+      setTimeout(playSession, 300);
+    }, { threshold: 0.35 });
+    tio.observe(termBody);
+  }
+
   /* ---------- toast ---------- */
   const toast = document.getElementById("toast");
   let toastTimer = null;
