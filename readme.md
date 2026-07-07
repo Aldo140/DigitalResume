@@ -1,97 +1,56 @@
-# Digital Resume - Aldo Ortiz
+# Aldo Ortiz — Terminal Portfolio
 
-A modern, responsive digital resume and portfolio website showcasing my skills, projects, and work experience.
+A digital resume built as a **live market terminal** — because my work lives at the
+intersection of fintech, data, and code.
 
-## Features
+**Live:** https://aldo140.github.io/DigitalResume/
 
-- Clean, modern UI with light/dark theme
-- Responsive design for all devices
-- Interactive animations with GSAP
-- Contact form integration via Formspree
-- Optimized performance and accessibility
+## The concept
 
-## Project Structure
+Instead of another dark portfolio template, the whole site behaves like a trading
+terminal for my career:
+
+- **Hero** — a self-drawing, continuously animating career chart on `<canvas>`
+- **Ticker tape** — skills scroll across the bottom like market symbols
+- **Watchlist** — skills as a live table with level bars and sparklines
+- **Holdings** — projects as ticker-symbol cards (`MRUH`, `AMRN`, `CNRP`…) that open full prospectuses
+- **Order history** — work experience as open/filled positions
+- **Crosshair cursor** — the page is a chart; the cursor shows live coordinates
+- **Boot sequence** — a fast terminal boot on first load
+
+## Stack
+
+Zero frameworks, zero build step. Hand-written HTML, CSS, and vanilla JS.
+
+- Canvas 2D for the hero chart, `IntersectionObserver` for scroll reveals and count-ups
+- Native `<dialog>` for project detail modals
+- Type: Bricolage Grotesque · IBM Plex Sans · IBM Plex Mono
+- Respects `prefers-reduced-motion` throughout; responsive down to mobile
+
+## Structure
 
 ```
-├── index.html (main page)
-├── pages/ (project pages)
-│   ├── project1.html
-│   └── cto-european-energy-company.html
+├── index.html          # the whole site
+├── 404.html            # redirects retired /pages/* URLs
+├── sw.js               # self-destructing service worker (clears old caches)
 ├── src/
-│   ├── js/
-│   │   ├── mobile-menu.js (mobile navigation)
-│   │   ├── gsap-animations.js (scroll animations)
-│   │   ├── form-handler.js (contact form)
-│   │   └── theme-switcher.js (theme toggle)
-│   └── styles/
-│       ├── main.css (main styles)
-│       ├── base.css (base styles)
-│       ├── theme-switcher.css (theme styles)
-│       └── components/
-│           ├── nav.css
-│           ├── hero.css
-│           ├── socials.css
-│           ├── tech.css
-│           ├── projects.css
-│           ├── work.css
-│           ├── contact.css
-│           └── footer.css
-├── assets/
-│   ├── images/ (optimized images)
-│   └── resume.pdf
-└── components/ (reusable HTML components)
-    ├── nav.html
-    ├── hero.html
-    ├── socials.html
-    ├── tech.html
-    ├── projects.html
-    ├── work.html
-    ├── contact.html
-    ├── footer.html
-    └── theme-switcher.html
+│   ├── styles/main.css
+│   └── js/main.js
+└── assets/
+    ├── images/         # headshot, favicon
+    └── resume.pdf
 ```
 
-## Technologies Used
-- HTML5
-- CSS3 (with modern features)
-- JavaScript (ES6+)
-- GSAP for animations
-- Font Awesome for icons
-- Google Fonts (Readex Pro)
+## Run locally
 
-## Features
-- Responsive design for all screen sizes
-- Dark/light theme toggle
-- Smooth scroll animations
-- Mobile-friendly navigation
-- Contact form with Formspree integration
-- Optimized performance
-- Accessibility features
-
-## Live Demo
-Visit [https://aldo140.github.io/DigitalResume/](https://aldo140.github.io/DigitalResume/) to see the live version.
-
-## License
-MIT License - Feel free to use this as a template for your own digital resume!
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000
+```
 
 ## Contact
-For questions or feedback, please reach out through the contact form on the website or via GitHub.
 
-## Table of Contents
-- [About](#about)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- aldoortiz14@gmail.com
+- [LinkedIn](https://www.linkedin.com/in/aldo-ortiz14/) · [GitHub](https://github.com/Aldo140)
 
-## About
-The Digital Resume is designed to highlight my professional journey and competencies. It provides potential employers and collaborators with a clear overview of my background, skills, and accomplishments.
-
-## Installation
-To run the Digital Resume locally on your machine, follow these steps:
-
-1. Clone the repository:
-   ```
+MIT License.

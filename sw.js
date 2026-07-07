@@ -1,62 +1,17 @@
-const CACHE_NAME = 'portfolio-v1';
+/* Self-destructing service worker.
+   The previous site registered a cache-first SW; this replaces it, wipes all
+   caches, unregisters itself, and reloads open tabs so visitors get the
+   new site instead of a stale cached copy. */
+self.addEventListener("install", () => self.skipWaiting());
 
-const basePath = self.location.pathname.includes('/DigitalResume/')
-  ? '/DigitalResume/'
-  : '/';
-
-const urlsToCache = [
-  `${basePath}`,
-  `${basePath}index.html`,
-  `${basePath}src/styles/main.css`,
-  `${basePath}src/styles/theme-switcher.css`,
-  `${basePath}src/js/mobile-menu.js`,
-  `${basePath}src/js/theme-switcher.js`,
-  `${basePath}src/js/gsap-animations.js`,
-  `${basePath}src/js/form-handler.js`,
-  `${basePath}assets/images/headshots.jfif`,
-  `${basePath}assets/images/favicon.png`,
-  `${basePath}offline.html`
-];
-
-// Install Service Worker
-self.addEventListener('install', event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-      .catch(err => console.error('Cache addAll failed:', err))
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+      await self.registration.unregister();
+      const clients = await self.clients.matchAll({ type: "window" });
+      clients.forEach((client) => client.navigate(client.url));
+    })()
   );
 });
-
-// Activate Service Worker
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
-
-// Fetch Event Strategy (Cache First)
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      // Return from cache if available
-      if (response) return response;
-
-      // Otherwise fetch from network
-      return fetch(event.request).catch(() => {
-        // If it's a navigation request (HTML page), show offline fallback
-        if (event.request.destination === 'document') {
-          return caches.match(`${basePath}offline.html`);
-        }
-      });
-    })
-  );
-});
-

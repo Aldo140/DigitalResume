@@ -2,451 +2,441 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Aldo Ortiz | Developer & Analyst</title>
-  <meta name="description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preload" as="image" href="./assets/images/headshots.jfif">
-  <link rel="stylesheet" href="./src/styles/components/tech.css" />
-  <link rel="stylesheet" href="./src/styles/components/projects.css" />
-
-
-
-  <script>
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  </script>
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aldo140.github.io/DigitalResume/" />
-  <meta property="og:title" content="Aldo Ortiz | Developer & Analyst" />
-  <meta property="og:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
-  <meta property="og:image" content="./assets/images/headshots.jfif" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://aldo140.github.io/DigitalResume/" />
-  <meta property="twitter:title" content="Aldo Ortiz | Developer & Analyst" />
-  <meta property="twitter:description" content="Digital resume and portfolio of Aldo Ortiz - Software Developer, Data Analyst, and Tech Professional based in Calgary, Canada." />
-  <meta property="twitter:image" content="./assets/images/headshots.jfif" />
-
-  <meta name="keywords" content="software developer, data analyst, tech professional, Calgary, Canada, portfolio" />
+  <title>Aldo Ortiz — Developer &amp; Analyst</title>
+  <meta name="description" content="Aldo Ortiz — software developer and business analyst working at the intersection of fintech, data, and product. Calgary, Canada." />
   <meta name="author" content="Aldo Ortiz" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://aldo140.github.io/DigitalResume/" />
-
-  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-
-  <link rel="stylesheet" href="./src/styles/main.css?v=1.0.1" />
-  <link rel="stylesheet" href="./src/styles/theme-switcher.css?v=1.0.1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
-
-  <link rel="preload" href="./src/js/mobile-menu.js" as="script" />
-  <link rel="preload" href="./src/js/theme-switcher.js" as="script" />
-  <link rel="preload" href="./src/js/gsap-animations.js" as="script" />
-  <link rel="preload" href="./src/js/form-handler.js" as="script" />
+  <meta name="theme-color" content="#070B14" />
+  <meta property="og:title" content="Aldo Ortiz — Developer & Analyst" />
+  <meta property="og:description" content="Software, data, and fintech product work — rendered as a live terminal." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="alternate icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
 </head>
 <body>
-  <div class="scroll-progress"></div>
 
-  <nav>
-    <div class="nav-container">
-      <button class="hamburger-menu" aria-label="Toggle navigation menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-overlay"></div>
-      <div class="nav-links">
-        <a href="#about"><i class="fas fa-user"></i> About</a>
-        <a href="#tech"><i class="fas fa-code"></i> Tech</a>
-        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="#work"><i class="fas fa-briefcase"></i> Work</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <div id="theme-switcher" aria-label="Theme toggle">
-    <div class="theme" id="theme-light" data-theme="light" title="Light Mode"></div>
-    <div class="theme" id="theme-dark" data-theme="dark" title="Dark Mode"></div>
+  <!-- Boot sequence overlay -->
+  <div id="boot" aria-hidden="true">
+    <pre id="boot-text"></pre>
   </div>
 
-  <main id="container--main">
-    <!-- HERO SECTION -->
-    <section id="wrapper--hero" class="section--page hero-custom">
-      <div class="profile-section">
-        <div class="profile-image-container">
-          <img id="profile-pic" class="invisible-before-load" src="./assets/images/headshots.jfif" alt="Aldo Ortiz" />
-        </div>
-      </div>
-      <div class="hero-text">
-        <h1 id="user-name" class="invisible-before-load">Aldo Ortiz</h1>
-        <p id="bio" class="invisible-before-load">
-          Innovative data analyst and software developer with a passion for financial technology.
-          Leveraging computer information systems expertise to drive data-driven solutions and technological innovation.
+  <!-- Chart crosshair cursor -->
+  <div id="xh-v" class="xh" aria-hidden="true"></div>
+  <div id="xh-h" class="xh" aria-hidden="true"></div>
+  <div id="xh-tag" aria-hidden="true">AO 0.00</div>
+
+  <!-- Scroll progress -->
+  <div id="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand mono" href="#top">ORTIZ<span class="brand-slash">/</span>A</a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#about"><span class="mono nav-key">01</span> About</a>
+      <a href="#skills"><span class="mono nav-key">02</span> Skills</a>
+      <a href="#projects"><span class="mono nav-key">03</span> Projects</a>
+      <a href="#experience"><span class="mono nav-key">04</span> Experience</a>
+      <a href="#contact"><span class="mono nav-key">05</span> Contact</a>
+    </nav>
+    <div class="topbar-meta mono">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="status-label">OPEN&nbsp;TO&nbsp;WORK</span>
+      <span class="clock" id="clock" title="Calgary time">--:--:--</span>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <canvas id="chart" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow mono reveal">AO:PROFILE &nbsp;·&nbsp; CALGARY, CA &nbsp;·&nbsp; EST. 2001 <span class="gain">▲ TRENDING UP</span></p>
+        <h1 class="hero-name reveal">ALDO<br />ORTIZ</h1>
+        <p class="hero-sub reveal">
+          Software developer &amp; business analyst trading in
+          <em>fintech</em>, <em>data</em>, and <em>product</em>.
+          I turn ambiguous problems into systems that ship.
         </p>
-        <div class="hero-social-buttons invisible-before-load">
-          <a href="https://github.com/Aldo140" target="_blank" class="btn-glow"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank" class="btn-glow"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="./assets/resume.pdf" target="_blank" class="btn-glow"><i class="fas fa-file-pdf"></i> Resume</a>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#projects" data-magnet>View holdings <span class="mono">→</span></a>
+          <a class="btn btn-ghost" href="assets/resume.pdf" target="_blank" rel="noopener" data-magnet>Resume.pdf <span class="mono">↗</span></a>
         </div>
+        <p class="hero-quote mono reveal">
+          <span class="muted">LAST:</span> <span id="last-price" class="gain">168.42</span>
+          <span class="muted">· VOL:</span> 7 PROJECTS
+          <span class="muted">· RANGE:</span> 2021 — NOW
+        </p>
       </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section--page">
-      <h2>About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>I'm a passionate software developer and data analyst with a strong foundation in computer information systems. My journey in tech has been driven by a desire to create innovative solutions that make a difference.</p>
-
-          <div class="about-highlights">
-            <div class="highlight-item">
-              <i class="fas fa-graduation-cap"></i>
-              <h3>Education</h3>
-              <p>Computer Information Systems at Mount Royal University</p>
-            </div>
-
-            <div class="highlight-item">
-              <i class="fas fa-code"></i>
-              <h3>Specialization</h3>
-              <p>Full-stack development, Data Analysis, Financial Technology</p>
-            </div>
-
-            <div class="highlight-item">
-              <i class="fas fa-globe"></i>
-              <h3>Location</h3>
-              <p>Calgary, Canada</p>
-            </div>
+      <!-- Ticker tape -->
+      <div class="tape" aria-hidden="true">
+        <div class="tape-track" id="tape-track">
+          <div class="tape-group">
+            <span>PYTHON <b class="gain">▲ 18.2%</b></span>
+            <span>JAVASCRIPT <b class="gain">▲ 14.7%</b></span>
+            <span>REACT <b class="gain">▲ 12.3%</b></span>
+            <span>SQL <b class="gain">▲ 9.8%</b></span>
+            <span>TENSORFLOW <b class="gain">▲ 8.5%</b></span>
+            <span>NODE.JS <b class="gain">▲ 11.1%</b></span>
+            <span>AWS <b class="gain">▲ 7.4%</b></span>
+            <span>DOCKER <b class="gain">▲ 6.9%</b></span>
+            <span>FINTECH <b class="gain">▲ 21.0%</b></span>
+            <span>SLEEP <b class="loss">▼ 4.2%</b></span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="about-skills">
-          <h3>Core Competencies</h3>
-          <ul>
-            <li>Data Analysis & Visualization</li>
-            <li>Full-stack Development</li>
-            <li>Financial Technology</li>
-            <li>Agile Methodologies</li>
-            <li>Problem Solving</li>
-            <li>Team Collaboration</li>
-          </ul>
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <header class="sec-head reveal">
+        <p class="mono sec-tag">[01] ABOUT &nbsp;·&nbsp; AO:PROFILE</p>
+        <h2>Company profile</h2>
+      </header>
+
+      <div class="about-grid">
+        <div class="panel about-main reveal">
+          <div class="about-photo">
+            <img src="assets/images/headshot.jpg" alt="Aldo Ortiz" width="160" height="160" loading="lazy" />
+            <div class="mono photo-caption">FIG 1.0 — THE ANALYST</div>
+          </div>
+          <div class="about-copy">
+            <p>
+              I'm a developer and analyst with a Computer Information Systems foundation from
+              Mount Royal University, currently shaping banking platforms as a
+              <strong>Business Analyst at VeriPark</strong>. Before that: fintech support at Neo
+              Financial and IT operations at QuadReal.
+            </p>
+            <p>
+              My edge is working both sides of the spread — I write the code <em>and</em> speak the
+              business. From CTO of a renewable-energy startup in Porto to shipping hackathon
+              fintech tools in a weekend, I bet on projects where technical depth meets real-world
+              value.
+            </p>
+          </div>
+        </div>
+        <div class="panel stats-panel reveal">
+          <h3 class="mono panel-title">KEY METRICS</h3>
+          <dl class="stats">
+            <div><dt class="mono" data-count="7" data-suffix="+">0</dt><dd>projects shipped</dd></div>
+            <div><dt class="mono" data-count="400" data-suffix="+">0</dt><dd>hackers served via MRU Hacks</dd></div>
+            <div><dt class="mono" data-count="85" data-suffix="%">0</dt><dd>ML model accuracy</dd></div>
+            <div><dt class="mono" data-count="95" data-suffix="+">0</dt><dd>Lighthouse score, shipped sites</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-<!-- TECH STACK (Responsive + Collapsible) -->
-<section id="tech" class="section--page">
-  <h2>Tech I Use</h2>
-  <div class="tech-grid-wrapper">
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <header class="sec-head reveal">
+        <p class="mono sec-tag">[02] SKILLS &nbsp;·&nbsp; WATCHLIST</p>
+        <h2>The watchlist</h2>
+      </header>
 
-    <!-- Box 1 -->
-    <div class="tech-category tech-items">
-      <h3>Programming Languages</h3>
-      <ul>
-        <li>Python</li>
-        <li>JavaScript</li>
-        <li>Java</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>.NET</li>
-      </ul>
-    </div>
-
-    <!-- Box 2 -->
-    <div class="tech-category tech-items">
-      <h3>Libraries & Frameworks</h3>
-      <ul>
-        <li>React</li>
-        <li>Flask</li>
-        <li>Django</li>
-        <li>Express</li>
-      </ul>
-    </div>
-
-    <!-- Box 3 -->
-    <div class="tech-category tech-items">
-      <h3>Data Analysis</h3>
-      <ul>
-        <li>Pandas</li>
-        <li>NumPy</li>
-        <li>Matplotlib</li>
-        <li>Seaborn</li>
-        <li>Scikit-Learn</li>
-        <li>TensorFlow</li>
-      </ul>
-    </div>
-
-    <!-- Box 4 -->
-    <div class="tech-category tech-items">
-      <h3>Database Management</h3>
-      <ul>
-        <li>MySQL</li>
-        <li>MongoDB</li>
-        <li>PostgreSQL</li>
-        <li>SQLite</li>
-        <li>Google Cloud SQL</li>
-      </ul>
-    </div>
-
-    <!-- Box 5 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Cloud Services & DevOps</h3>
-      <ul>
-        <li>AWS</li>
-        <li>Azure</li>
-        <li>Firebase</li>
-        <li>Docker</li>
-        <li>Jenkins</li>
-        <li>GitHub Actions</li>
-      </ul>
-    </div>
-
-    <!-- Box 6 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Networking & IT Tools</h3>
-      <ul>
-        <li>TCP/IP</li>
-        <li>Active Directory</li>
-        <li>Azure AD</li>
-        <li>Wireshark</li>
-        <li>Nmap</li>
-        <li>Kali Linux</li>
-      </ul>
-    </div>
-
-    <!-- Box 7 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Web Development</h3>
-      <ul>
-        <li>Node.js</li>
-        <li>REST APIs</li>
-        <li>AJAX</li>
-        <li>JSON</li>
-      </ul>
-    </div>
-
-    <!-- Box 8 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Machine Learning & AI</h3>
-      <ul>
-        <li>Scikit-Learn</li>
-        <li>TensorFlow</li>
-        <li>Keras</li>
-        <li>NLP</li>
-      </ul>
-    </div>
-
-    <!-- Box 9 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Cybersecurity</h3>
-      <ul>
-        <li>Metasploit</li>
-        <li>Nessus</li>
-        <li>Burp Suite</li>
-        <li>OWASP ZAP</li>
-      </ul>
-    </div>
-
-    <!-- Box 10 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Version Control</h3>
-      <ul>
-        <li>Git</li>
-        <li>GitHub</li>
-        <li>GitLab</li>
-      </ul>
-    </div>
-
-    <!-- Box 11 -->
-    <div class="tech-category tech-items hidden-box">
-      <h3>Automation & Scripting</h3>
-      <ul>
-        <li>PowerShell</li>
-        <li>Bash</li>
-        <li>Python scripting</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- View All Button -->
-  <div class="techstack-toggle-controls">
-    <button id="toggle-techstack" class="btn-toggle" aria-expanded="false">View All</button>
-  </div>
-</section>
-
-
-
-
-
-
-<!-- Marquee Scroller -->
-<div class="marquee-wrapper">
-  <div class="marquee-track">
-    <div class="marquee-content">
-      <span>Python</span>
-      <span>JavaScript</span>
-      <span>React</span>
-      <span>Node.js</span>
-      <span>Django</span>
-      <span>TensorFlow</span>
-      <span>MongoDB</span>
-      <span>MySQL</span>
-      <span>GitHub</span>
-      <span>AWS</span>
-      <span>PostgreSQL</span>
-      <span>Seaborn</span>
-      <span>Docker</span>
-      <span>Flask</span>
-      <span>Java</span>
-      <span>Kali Linux</span>
-      <span>Figma</span>
-      <!-- Repeat for infinite loop -->
-      <span>Python</span>
-      <span>JavaScript</span>
-      <span>React</span>
-      <span>Node.js</span>
-      <span>Django</span>
-    </div>
-  </div>
-</div>
-
-
-
-
-
- 
-<!-- PROJECTS -->
-<section id="projects" class="section--page">
-  <h2>Featured Projects & Programs</h2>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <h3>📌 MRU Hacks Website Development</h3>
-      <p>Lead developer of the MRU Hacks website, contributing to UI/UX, backend logic, and event systems.</p>
-      <a href="pages/mru-hacks.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>🚀 European Innovation Academy</h3>
-      <p>CTO for a renewable energy startup during a 3-week international entrepreneurship program in Portugal.</p>
-      <a href="pages/eia-amarna.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>💡 CanRepay: Student Loan App</h3>
-      <p>Built a cross-platform React Native app for Canadian students to manage loan repayment and net worth.</p>
-      <a href="pages/canrepay.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>🤝 Mission to Market Program</h3>
-      <p>Helped Calgary-based non-profits build sustainable business strategies through market research & finance planning.</p>
-      <a href="pages/mission-to-market.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>🧾 Alphacons Conference Registration</h3>
-      <p>Built a full-stack web app with payment integration for managing event registrations and admin dashboards.</p>
-      <a href="pages/alphacons.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>📈 Tech LiftOff Program</h3>
-      <p>Developed a startup concept and strategy with mentorship from seasoned entrepreneurs and product experts.</p>
-      <a href="pages/techliftoff.html" class="btn-read-more">Read More</a>
-    </div>
-
-    <div class="project-card">
-      <h3>🧠 Social Media Sentiment Analysis</h3>
-      <p>Python & TensorFlow-based ML app for classifying post sentiment using real-time social media data.</p>
-      <a href="pages/sentiment-analysis.html" class="btn-read-more">Read More</a>
-    </div>
-
-  </div>
-</section>
-
-
-
-    <!-- WORK HISTORY -->
-    <section id="work" class="section--page">
-      <h2>Experience</h2>
-      <div class="card--work-history">
-        <strong>Business Analyst | VeriPark</strong><br />
-        <p>2024 - Present</p>
-        <ul>
-          <li>Delivered requirement docs for enterprise banking platforms</li>
-          <li>Collaborated with devs and stakeholders using agile methodology</li>
-        </ul>
-      </div>
-      <div class="card--work-history">
-        <strong>IT Co-op | QuadReal</strong><br />
-        <p>2024</p>
-        <ul>
-          <li>Resolved issues across hardware, software, and network environments</li>
-        </ul>
-      </div>
-      <div class="card--work-history">
-        <strong>Customer Experience | Neo Financial</strong><br />
-        <p>2021 - 2023</p>
-        <ul>
-          <li>Helped users through onboarding and fintech troubleshooting</li>
-        </ul>
+      <div class="watchlist reveal" role="table" aria-label="Skills">
+        <div class="wl-row wl-head mono" role="row">
+          <span role="columnheader">SYM</span>
+          <span role="columnheader">ASSET</span>
+          <span role="columnheader" class="wl-detail-col">COMPOSITION</span>
+          <span role="columnheader">LEVEL</span>
+          <span role="columnheader" class="wl-spark-col">1Y</span>
+          <span role="columnheader" class="wl-chg">CHG</span>
+        </div>
+        <div class="wl-row" role="row" data-level="92" data-chg="+18.2">
+          <span class="mono wl-sym" role="cell">PY</span>
+          <span class="wl-name" role="cell">Python</span>
+          <span class="wl-detail mono" role="cell">pandas · NumPy · scikit-learn</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+18.2%</span>
+        </div>
+        <div class="wl-row" role="row" data-level="88" data-chg="+14.7">
+          <span class="mono wl-sym" role="cell">JS</span>
+          <span class="wl-name" role="cell">JavaScript</span>
+          <span class="wl-detail mono" role="cell">React · Node · Express</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+14.7%</span>
+        </div>
+        <div class="wl-row" role="row" data-level="90" data-chg="+16.4">
+          <span class="mono wl-sym" role="cell">BA</span>
+          <span class="wl-name" role="cell">Business analysis</span>
+          <span class="wl-detail mono" role="cell">requirements · stakeholders · banking</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+16.4%</span>
+        </div>
+        <div class="wl-row" role="row" data-level="84" data-chg="+9.8">
+          <span class="mono wl-sym" role="cell">SQL</span>
+          <span class="wl-name" role="cell">Data &amp; databases</span>
+          <span class="wl-detail mono" role="cell">MySQL · MongoDB · pipelines</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+9.8%</span>
+        </div>
+        <div class="wl-row" role="row" data-level="78" data-chg="+8.5">
+          <span class="mono wl-sym" role="cell">ML</span>
+          <span class="wl-name" role="cell">Machine learning</span>
+          <span class="wl-detail mono" role="cell">TensorFlow · Keras · NLP</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+8.5%</span>
+        </div>
+        <div class="wl-row" role="row" data-level="75" data-chg="+7.4">
+          <span class="mono wl-sym" role="cell">CLD</span>
+          <span class="wl-name" role="cell">Cloud &amp; DevOps</span>
+          <span class="wl-detail mono" role="cell">AWS · Azure · Docker · Actions</span>
+          <span class="wl-bar" role="cell"><i></i></span>
+          <span class="wl-spark" role="cell"></span>
+          <span class="mono wl-chg gain" role="cell">+7.4%</span>
+        </div>
       </div>
     </section>
 
-    <!-- CONTACT FORM -->
-    <section id="contact" class="section--page">
-      <h2>Get in Touch</h2>
-      <p>Open to roles in data, dev, or tech strategy. Send me a message below 👇</p>
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <header class="sec-head reveal">
+        <p class="mono sec-tag">[03] PROJECTS &nbsp;·&nbsp; HOLDINGS</p>
+        <h2>Current holdings</h2>
+        <p class="sec-note">Seven positions. Click any card for the full prospectus.</p>
+      </header>
 
-      <form id="contact-form" action="https://formspree.io/f/xkgjrqno" method="POST">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
-          <span class="error-message">Please enter your name</span>
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" autocomplete="email" required />
-          <span class="error-message">Please enter a valid email address</span>
-        </div>
-        <div class="form-group">
-          <textarea name="message" rows="5" placeholder="Your Message" autocomplete="off" required></textarea>
-          <span class="error-message">Please enter your message</span>
-        </div>
-        <button type="submit" class="cta-button">Send Message</button>
-      </form>
+      <div class="proj-grid">
+        <button class="proj-card reveal" data-modal="m-mruh">
+          <div class="proj-top mono"><span class="proj-sym">MRUH</span><span class="gain">▲ LEAD DEV</span></div>
+          <h3>MRU Hacks</h3>
+          <p>Official website for Mount Royal University's flagship hackathon — registration, live schedules, 400+ students served.</p>
+          <span class="proj-tags mono">WEB · UI/UX · EVENTS</span>
+        </button>
 
-      <div id="form-status" style="margin-top: 1em;"></div>
+        <button class="proj-card reveal" data-modal="m-amrn">
+          <div class="proj-top mono"><span class="proj-sym">AMRN</span><span class="gain">▲ CTO</span></div>
+          <h3>Amarna Energy</h3>
+          <p>Renewable-energy marketplace built at the European Innovation Academy in Porto — 1 of 14 students selected from MRU.</p>
+          <span class="proj-tags mono">STARTUP · ENERGY · MVP</span>
+        </button>
+
+        <button class="proj-card reveal" data-modal="m-cnrp">
+          <div class="proj-top mono"><span class="proj-sym">CNRP</span><span class="gain">▲ FINALIST</span></div>
+          <h3>CanRepay</h3>
+          <p>Student-loan repayment planner built in a weekend at CalgaryHacks. Debt visualization, repayment strategy, net worth.</p>
+          <span class="proj-tags mono">FINTECH · REACT NATIVE</span>
+        </button>
+
+        <button class="proj-card reveal" data-modal="m-sent">
+          <div class="proj-top mono"><span class="proj-sym">SENT</span><span class="gain">▲ 85% ACC</span></div>
+          <h3>Sentiment Analysis</h3>
+          <p>NLP pipeline classifying social-media sentiment in real time with TensorFlow — trained on Reddit and X data.</p>
+          <span class="proj-tags mono">PYTHON · ML · NLP</span>
+        </button>
+
+        <button class="proj-card reveal" data-modal="m-alph">
+          <div class="proj-top mono"><span class="proj-sym">ALPH</span><span class="gain">▲ FULL STACK</span></div>
+          <h3>Alphacons</h3>
+          <p>Conference registration platform with Stripe payments, admin dashboard, and a Node/MySQL backend on Google Cloud.</p>
+          <span class="proj-tags mono">REACT · NODE · STRIPE</span>
+        </button>
+
+        <button class="proj-card reveal" data-modal="m-m2m">
+          <div class="proj-top mono"><span class="proj-sym">M2M</span><span class="gain">▲ STRATEGY</span></div>
+          <h3>Mission to Market</h3>
+          <p>Business hackathon building revenue strategy for Starling Community, a Calgary non-profit — research to pitch.</p>
+          <span class="proj-tags mono">STRATEGY · NON-PROFIT</span>
+        </button>
+
+        <button class="proj-card reveal" data-modal="m-tlo">
+          <div class="proj-top mono"><span class="proj-sym">TLO</span><span class="gain">▲ PRODUCT</span></div>
+          <h3>Tech LiftOff</h3>
+          <p>University startup program — led product planning for a real-estate data concept from ideation to investor pitch.</p>
+          <span class="proj-tags mono">PRODUCT · PITCHING</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <header class="sec-head reveal">
+        <p class="mono sec-tag">[04] EXPERIENCE &nbsp;·&nbsp; ORDER HISTORY</p>
+        <h2>Order history</h2>
+      </header>
+
+      <div class="timeline">
+        <article class="t-item reveal">
+          <div class="t-meta mono"><span class="t-year">2024 — NOW</span><span class="t-status open">● OPEN</span></div>
+          <div class="t-card">
+            <h3>Business Analyst <span class="mono t-org">@ VERIPARK</span></h3>
+            <p>Delivering requirement solutions for banking platforms — translating between technical teams and stakeholders on enterprise fintech products.</p>
+          </div>
+        </article>
+        <article class="t-item reveal">
+          <div class="t-meta mono"><span class="t-year">2024</span><span class="t-status">● FILLED</span></div>
+          <div class="t-card">
+            <h3>IT Co-op <span class="mono t-org">@ QUADREAL</span></h3>
+            <p>Systems support, troubleshooting, and operational reliability for a major real-estate investment firm.</p>
+          </div>
+        </article>
+        <article class="t-item reveal">
+          <div class="t-meta mono"><span class="t-year">2021 — 2023</span><span class="t-status">● FILLED</span></div>
+          <div class="t-card">
+            <h3>Customer Experience <span class="mono t-org">@ NEO FINANCIAL</span></h3>
+            <p>Frontline fintech — user support and onboarding across cards, rewards, and banking products at one of Canada's fastest-growing startups.</p>
+          </div>
+        </article>
+        <article class="t-item reveal">
+          <div class="t-meta mono"><span class="t-year">ONGOING</span><span class="t-status open">● OPEN</span></div>
+          <div class="t-card">
+            <h3>B.C.I.S. <span class="mono t-org">@ MOUNT ROYAL UNIVERSITY</span></h3>
+            <p>Computer Information Systems — where the code, data, and business sides of this portfolio were forged.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <header class="sec-head reveal">
+        <p class="mono sec-tag">[05] CONTACT &nbsp;·&nbsp; PLACE ORDER</p>
+        <h2>Open a position</h2>
+        <p class="sec-note">Open to software, analytics, fintech, and product-driven collaborations.</p>
+      </header>
+
+      <div class="contact-grid">
+        <div class="panel contact-links reveal">
+          <h3 class="mono panel-title">DIRECT LINES</h3>
+          <a class="c-link" href="mailto:aldoortiz14@gmail.com">
+            <span class="mono c-key">EMAIL</span> aldoortiz14@gmail.com <span class="mono c-arrow">→</span>
+          </a>
+          <a class="c-link" href="https://www.linkedin.com/in/aldo-ortiz14/" target="_blank" rel="noopener">
+            <span class="mono c-key">LNKD</span> aldo-ortiz14 <span class="mono c-arrow">↗</span>
+          </a>
+          <a class="c-link" href="https://github.com/Aldo140" target="_blank" rel="noopener">
+            <span class="mono c-key">GHUB</span> Aldo140 <span class="mono c-arrow">↗</span>
+          </a>
+          <a class="c-link" href="assets/resume.pdf" target="_blank" rel="noopener">
+            <span class="mono c-key">PDF</span> resume.pdf <span class="mono c-arrow">↗</span>
+          </a>
+        </div>
+        <form class="panel contact-form reveal" action="https://formspree.io/f/xkgjrqno" method="POST">
+          <h3 class="mono panel-title">SEND A MESSAGE</h3>
+          <label class="mono" for="f-name">NAME</label>
+          <input id="f-name" type="text" name="name" placeholder="Jane Trader" required />
+          <label class="mono" for="f-email">EMAIL</label>
+          <input id="f-email" type="email" name="email" placeholder="jane@fund.com" required />
+          <label class="mono" for="f-msg">MESSAGE</label>
+          <textarea id="f-msg" name="message" rows="4" placeholder="Tell me about the opportunity…" required></textarea>
+          <button class="btn btn-primary" type="submit" data-magnet>Execute order <span class="mono">→</span></button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
-
-  <footer>
-    <p>Built by Aldo Ortiz • Inspired by real dev portfolios • <a href="https://github.com/Aldo140/DigitalResume" target="_blank">Source</a></p>
+  <footer class="footer mono">
+    <span>© 2026 ALDO ORTIZ</span>
+    <span class="muted">DATA DELAYED BY 0MS · NOT FINANCIAL ADVICE</span>
+    <a href="#top">BACK TO TOP ↑</a>
   </footer>
 
-  <script src="./src/js/mobile-menu.js" defer></script>
-  <script src="./src/js/theme-switcher.js" defer></script>
-  <script src="./src/js/gsap-animations.js" defer></script>
-  <script src="./src/js/form-handler.js" defer></script>
-  <script src="./src/js/tech-toggle.js" defer></script>
+  <!-- ============ PROJECT MODALS ============ -->
+  <dialog class="modal" id="m-mruh">
+    <div class="modal-head mono"><span class="proj-sym">MRUH</span> MRU HACKS <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>MRU Hacks — Lead Developer &amp; UI/UX</h3>
+    <p>Led design and development of the official website for Mount Royal University's flagship hackathon: registration, live event updates, schedules, sponsor highlights, and speaker bios — maintained across two hackathon years.</p>
+    <ul>
+      <li>Responsive, accessible interface in HTML, CSS, and vanilla JS</li>
+      <li>Live countdowns, carousels, and mobile-optimized layouts</li>
+      <li>Registration workflows and announcement tooling</li>
+      <li>Served <strong>400+ students</strong> across Alberta · <strong>95+ Lighthouse</strong> scores</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://mruhacks.ca" target="_blank" rel="noopener">Visit mruhacks.ca <span class="mono">↗</span></a>
+  </dialog>
 
+  <dialog class="modal" id="m-amrn">
+    <div class="modal-head mono"><span class="proj-sym">AMRN</span> AMARNA ENERGY <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>European Innovation Academy — CTO, Amarna Energy</h3>
+    <p>Selected as 1 of 14 students to represent MRU at the EIA accelerator in Porto, Portugal. Served as CTO of Amarna Energy — a renewable-energy marketplace letting communities trade solar power.</p>
+    <ul>
+      <li>Led all technical planning and MVP development</li>
+      <li>Built the interactive UI prototype with mock APIs</li>
+      <li>Mentored by people from Google, Meta, and startup founders</li>
+      <li>Finalist for top pitch in the energy &amp; sustainability track</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://www.innovationacademy.global/" target="_blank" rel="noopener">About the EIA <span class="mono">↗</span></a>
+  </dialog>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').then(reg => {
-          console.log('Service worker registered');
-        }).catch(err => {
-          console.warn('Service worker registration failed:', err);
-        });
-      });
-    }
-  </script>
+  <dialog class="modal" id="m-cnrp">
+    <div class="modal-head mono"><span class="proj-sym">CNRP</span> CANREPAY <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>CanRepay — Student Loan Planner</h3>
+    <p>A mobile-first repayment planner built during CalgaryHacks to help Canadian students visualize debt, build repayment strategies, and track net worth in real time.</p>
+    <ul>
+      <li>React Native + Expo — iOS, Android, and web from one codebase</li>
+      <li>Calculators for federal and provincial loan programs</li>
+      <li>Real-time debt tracking and progress visualizations</li>
+      <li>Working MVP in one weekend · <strong>fintech category finalist</strong></li>
+    </ul>
+    <a class="btn btn-ghost" href="https://github.com/Aldo140/CanRepay" target="_blank" rel="noopener">Source on GitHub <span class="mono">↗</span></a>
+  </dialog>
+
+  <dialog class="modal" id="m-sent">
+    <div class="modal-head mono"><span class="proj-sym">SENT</span> SENTIMENT ANALYSIS <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>Social Media Sentiment Analysis</h3>
+    <p>An NLP pipeline that collects, classifies, and visualizes public sentiment in real time — tested on data scraped from Reddit and X.</p>
+    <ul>
+      <li>Preprocessing and tokenization with NLTK and SpaCy</li>
+      <li>Neural network built and trained with TensorFlow + Keras</li>
+      <li>MongoDB storage for posts and predictions</li>
+      <li><strong>85%+ validation accuracy</strong> · trends visualized in Matplotlib/Seaborn</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://github.com/Aldo140" target="_blank" rel="noopener">More on GitHub <span class="mono">↗</span></a>
+  </dialog>
+
+  <dialog class="modal" id="m-alph">
+    <div class="modal-head mono"><span class="proj-sym">ALPH</span> ALPHACONS <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>Alphacons — Conference Registration System</h3>
+    <p>Full-stack registration platform for a growing tech conference: attendees register, pay via Stripe, and get automatic confirmations; staff manage everything from an admin dashboard.</p>
+    <ul>
+      <li>React frontend with an intuitive registration flow</li>
+      <li>Node.js + MySQL backend hosted on Google Cloud</li>
+      <li>Stripe integration for secure payments and invoicing</li>
+      <li>Admin dashboard for speakers, sessions, and users</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://github.com/Aldo140/alphacons-conference" target="_blank" rel="noopener">Source on GitHub <span class="mono">↗</span></a>
+  </dialog>
+
+  <dialog class="modal" id="m-m2m">
+    <div class="modal-head mono"><span class="proj-sym">M2M</span> MISSION TO MARKET <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>Mission to Market — Non-profit Strategy</h3>
+    <p>A collaborative business hackathon building sustainable strategies for Calgary non-profits — I worked with student leaders and professionals on real organizational challenges.</p>
+    <ul>
+      <li>Needs analysis for Starling Community, a Calgary non-profit</li>
+      <li>Competitor and financial analysis for community programs</li>
+      <li>Revenue-generation strategy for a donation-based model</li>
+      <li>Presented findings to a panel of judges and stakeholders</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://www.starlings.ca" target="_blank" rel="noopener">Starling Community <span class="mono">↗</span></a>
+  </dialog>
+
+  <dialog class="modal" id="m-tlo">
+    <div class="modal-head mono"><span class="proj-sym">TLO</span> TECH LIFTOFF <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>Tech LiftOff — Startup Strategy Program</h3>
+    <p>University-linked program pairing tech students with mentors and founders. Developed a full startup strategy and MVP concept, from ideation to product pitch.</p>
+    <ul>
+      <li>Led product planning for a real-estate data-collection concept</li>
+      <li>Built competitive-analysis frameworks; pitched industry advisors</li>
+      <li>Mapped MVP requirements in Notion and Miro; UI mocks in Figma</li>
+      <li>Left with a working grasp of lean development and investor pitching</li>
+    </ul>
+  </dialog>
+
+  <script src="src/js/main.js" defer></script>
 </body>
 </html>
