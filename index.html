@@ -45,6 +45,7 @@
       <span class="status-dot" aria-hidden="true"></span>
       <span class="status-label">OPEN&nbsp;TO&nbsp;WORK</span>
       <span class="clock" id="clock" title="Calgary time">--:--:--</span>
+      <button class="palette-hint mono" id="palette-btn" aria-label="Open command palette">⌘K</button>
     </div>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
       <span></span><span></span>
@@ -72,7 +73,7 @@
         </div>
         <p class="hero-quote mono reveal">
           <span class="muted">LAST:</span> <span id="last-price" class="gain">168.42</span>
-          <span class="muted">· VOL:</span> 7 PROJECTS
+          <span class="muted">· VOL:</span> 8 POSITIONS
           <span class="muted">· RANGE:</span> 2021 — NOW
         </p>
       </div>
@@ -111,26 +112,27 @@
           </div>
           <div class="about-copy">
             <p>
-              I'm a developer and analyst with a Computer Information Systems foundation from
-              Mount Royal University, currently shaping banking platforms as a
-              <strong>Business Analyst at VeriPark</strong>. Before that: fintech support at Neo
-              Financial and IT operations at QuadReal.
+              Computer Information Systems grad from Mount Royal University (Class of 2025, minor
+              in Finance &amp; Economics), currently leading a distributed
+              <strong>ML team at DEFEND</strong> building classification systems for a youth-safety
+              platform. Before that: field marketing leadership at Fresh Prep, enterprise IT at
+              QuadReal, and fintech operations at Neo Financial.
             </p>
             <p>
               My edge is working both sides of the spread — I write the code <em>and</em> speak the
-              business. From CTO of a renewable-energy startup in Porto to shipping hackathon
-              fintech tools in a weekend, I bet on projects where technical depth meets real-world
-              value.
+              business. From CTO of a renewable-energy startup in Porto to a paid production website
+              for a Calgary restaurant, I bet on work where technical depth meets real-world value.
+              Fluent in English and Spanish; conversational French.
             </p>
           </div>
         </div>
         <div class="panel stats-panel reveal">
           <h3 class="mono panel-title">KEY METRICS</h3>
           <dl class="stats">
-            <div><dt class="mono" data-count="7" data-suffix="+">0</dt><dd>projects shipped</dd></div>
+            <div><dt class="mono" data-count="8" data-suffix="">0</dt><dd>projects shipped</dd></div>
             <div><dt class="mono" data-count="400" data-suffix="+">0</dt><dd>hackers served via MRU Hacks</dd></div>
             <div><dt class="mono" data-count="85" data-suffix="%">0</dt><dd>ML model accuracy</dd></div>
-            <div><dt class="mono" data-count="95" data-suffix="+">0</dt><dd>Lighthouse score, shipped sites</dd></div>
+            <div><dt class="mono" data-count="3" data-suffix="">0</dt><dd>languages spoken</dd></div>
           </dl>
         </div>
       </div>
@@ -208,22 +210,42 @@
       <header class="sec-head reveal">
         <p class="mono sec-tag">[03] PROJECTS &nbsp;·&nbsp; HOLDINGS</p>
         <h2>Current holdings</h2>
-        <p class="sec-note">Seven positions. Click any card for the full prospectus.</p>
+        <p class="sec-note">Eight positions. Click any card for the full prospectus — or press <span class="mono kbd">⌘K</span> and type.</p>
       </header>
 
       <div class="proj-grid">
-        <button class="proj-card reveal" data-modal="m-mruh">
-          <div class="proj-top mono"><span class="proj-sym">MRUH</span><span class="gain">▲ LEAD DEV</span></div>
+        <button class="proj-card feat reveal" data-modal="m-mruh">
+          <div class="proj-top mono"><span class="proj-sym">MRUH</span><span class="gain">▲ LEAD DEV · 2+ YRS</span></div>
           <h3>MRU Hacks</h3>
-          <p>Official website for Mount Royal University's flagship hackathon — registration, live schedules, 400+ students served.</p>
+          <p>Official website for Mount Royal University's flagship hackathon — registration, live schedules, sponsor and speaker platforms, maintained across two event years.</p>
+          <div class="proj-metric mono">
+            <span class="pm"><i>P/L</i><b class="gain">+400 HACKERS</b></span>
+            <span class="pm"><i>LIGHTHOUSE</i><b class="gain">95+</b></span>
+            <span class="pm"><i>STATUS</i><b>LIVE</b></span>
+          </div>
           <span class="proj-tags mono">WEB · UI/UX · EVENTS</span>
+          <span class="proj-spark" aria-hidden="true"></span>
+        </button>
+
+        <button class="proj-card feat reveal" data-modal="m-rio">
+          <div class="proj-top mono"><span class="proj-sym">RIO</span><span class="gain">▲ PAID CONTRACT</span></div>
+          <h3>Rio Alto</h3>
+          <p>Production website for a Calgary restaurant — a paid freelance contract with a JSON-driven dynamic menu system, built on Eleventy and shipped to rioalto.ca.</p>
+          <div class="proj-metric mono">
+            <span class="pm"><i>TYPE</i><b class="gain">FREELANCE</b></span>
+            <span class="pm"><i>STACK</i><b>11TY · JS</b></span>
+            <span class="pm"><i>STATUS</i><b class="gain">IN PROD</b></span>
+          </div>
+          <span class="proj-tags mono">ELEVENTY · SEO · CLIENT WORK</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-amrn">
           <div class="proj-top mono"><span class="proj-sym">AMRN</span><span class="gain">▲ CTO</span></div>
           <h3>Amarna Energy</h3>
-          <p>Renewable-energy marketplace built at the European Innovation Academy in Porto — 1 of 14 students selected from MRU.</p>
+          <p>Renewable-energy marketplace built at the European Innovation Academy in Porto — concept to product in 15 days with Google and Amazon mentors.</p>
           <span class="proj-tags mono">STARTUP · ENERGY · MVP</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-cnrp">
@@ -231,6 +253,7 @@
           <h3>CanRepay</h3>
           <p>Student-loan repayment planner built in a weekend at CalgaryHacks. Debt visualization, repayment strategy, net worth.</p>
           <span class="proj-tags mono">FINTECH · REACT NATIVE</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-sent">
@@ -238,6 +261,7 @@
           <h3>Sentiment Analysis</h3>
           <p>NLP pipeline classifying social-media sentiment in real time with TensorFlow — trained on Reddit and X data.</p>
           <span class="proj-tags mono">PYTHON · ML · NLP</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-alph">
@@ -245,6 +269,7 @@
           <h3>Alphacons</h3>
           <p>Conference registration platform with Stripe payments, admin dashboard, and a Node/MySQL backend on Google Cloud.</p>
           <span class="proj-tags mono">REACT · NODE · STRIPE</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-m2m">
@@ -252,6 +277,7 @@
           <h3>Mission to Market</h3>
           <p>Business hackathon building revenue strategy for Starling Community, a Calgary non-profit — research to pitch.</p>
           <span class="proj-tags mono">STRATEGY · NON-PROFIT</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
         <button class="proj-card reveal" data-modal="m-tlo">
@@ -259,9 +285,16 @@
           <h3>Tech LiftOff</h3>
           <p>University startup program — led product planning for a real-estate data concept from ideation to investor pitch.</p>
           <span class="proj-tags mono">PRODUCT · PITCHING</span>
+          <span class="proj-spark" aria-hidden="true"></span>
         </button>
       </div>
     </section>
+
+    <!-- ============ NEWSWIRE ============ -->
+    <div class="newswire reveal" aria-hidden="true">
+      <span class="nw-label mono">AO NEWSWIRE <i class="nw-dot"></i></span>
+      <span class="nw-text mono" id="nw-text"></span>
+    </div>
 
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="experience">
@@ -272,31 +305,38 @@
 
       <div class="timeline">
         <article class="t-item reveal">
-          <div class="t-meta mono"><span class="t-year">2024 — NOW</span><span class="t-status open">● OPEN</span></div>
+          <div class="t-meta mono"><span class="t-year">2025 — NOW</span><span class="t-status open">● OPEN</span></div>
           <div class="t-card">
-            <h3>Business Analyst <span class="mono t-org">@ VERIPARK</span></h3>
-            <p>Delivering requirement solutions for banking platforms — translating between technical teams and stakeholders on enterprise fintech products.</p>
+            <h3>ML Team Lead / Python Developer <span class="mono t-org">@ DEFEND / 65SQUARE</span></h3>
+            <p>Leading a distributed team building ML classification systems for a youth-safety social platform — Python, TensorFlow, NLP, data pipelines, and Agile sprint delivery from backlog to ship.</p>
           </div>
         </article>
         <article class="t-item reveal">
-          <div class="t-meta mono"><span class="t-year">2024</span><span class="t-status">● FILLED</span></div>
+          <div class="t-meta mono"><span class="t-year">2025 — 2026</span><span class="t-status">● FILLED</span></div>
           <div class="t-card">
-            <h3>IT Co-op <span class="mono t-org">@ QUADREAL</span></h3>
-            <p>Systems support, troubleshooting, and operational reliability for a major real-estate investment firm.</p>
+            <h3>Field Marketing &amp; Event Team Lead <span class="mono t-org">@ FRESH PREP</span></h3>
+            <p>Led Alberta field marketing and customer acquisition across activations, trade shows, and partner events — recruited and coached brand ambassadors, used CRM and conversion reporting to sharpen territory deployment, and built B2B partnerships with local businesses.</p>
+          </div>
+        </article>
+        <article class="t-item reveal">
+          <div class="t-meta mono"><span class="t-year">2023 — 2024</span><span class="t-status">● FILLED</span></div>
+          <div class="t-card">
+            <h3>Service Delivery Analyst Intern <span class="mono t-org">@ QUADREAL</span></h3>
+            <p>Enterprise IT for a major real-estate investment firm — incidents and service requests in ServiceNow, runbooks and knowledge-base content, Office scripting automation, and hands-on Azure, Active Directory, and IIS exposure.</p>
           </div>
         </article>
         <article class="t-item reveal">
           <div class="t-meta mono"><span class="t-year">2021 — 2023</span><span class="t-status">● FILLED</span></div>
           <div class="t-card">
-            <h3>Customer Experience <span class="mono t-org">@ NEO FINANCIAL</span></h3>
-            <p>Frontline fintech — user support and onboarding across cards, rewards, and banking products at one of Canada's fastest-growing startups.</p>
+            <h3>Customer Experience Analyst <span class="mono t-org">@ NEO FINANCIAL</span></h3>
+            <p>Frontline fintech — complex credit, banking, fraud, and mortgage cases; CRM documentation; turning recurring pain points into escalation insights; plus in-person acquisition at activations.</p>
           </div>
         </article>
         <article class="t-item reveal">
-          <div class="t-meta mono"><span class="t-year">ONGOING</span><span class="t-status open">● OPEN</span></div>
+          <div class="t-meta mono"><span class="t-year">2020 — 2025</span><span class="t-status">● SETTLED</span></div>
           <div class="t-card">
-            <h3>B.C.I.S. <span class="mono t-org">@ MOUNT ROYAL UNIVERSITY</span></h3>
-            <p>Computer Information Systems — where the code, data, and business sides of this portfolio were forged.</p>
+            <h3>B.C.I.S., Minor in Finance &amp; Economics <span class="mono t-org">@ MOUNT ROYAL UNIVERSITY</span></h3>
+            <p>Computer Information Systems, Class of 2025 — where the code, data, and business sides of this portfolio were forged. Includes the European Innovation Academy at the University of Porto.</p>
           </div>
         </article>
       </div>
@@ -358,6 +398,19 @@
       <li>Served <strong>400+ students</strong> across Alberta · <strong>95+ Lighthouse</strong> scores</li>
     </ul>
     <a class="btn btn-ghost" href="https://mruhacks.ca" target="_blank" rel="noopener">Visit mruhacks.ca <span class="mono">↗</span></a>
+  </dialog>
+
+  <dialog class="modal" id="m-rio">
+    <div class="modal-head mono"><span class="proj-sym">RIO</span> RIO ALTO <button class="modal-x" data-close aria-label="Close">✕</button></div>
+    <h3>Rio Alto — Restaurant Website</h3>
+    <p>A paid freelance web-development contract, delivered to production for a Calgary restaurant. Built for speed, mobile use, and easy menu updates without a CMS.</p>
+    <ul>
+      <li>Eleventy (11ty) static build with Nunjucks templates</li>
+      <li>JSON-driven dynamic menu system — the client edits data, not code</li>
+      <li>Modular, reusable components; SEO-friendly structure</li>
+      <li><strong>Live in production</strong> and serving real customers</li>
+    </ul>
+    <a class="btn btn-ghost" href="https://rioalto.ca" target="_blank" rel="noopener">Visit rioalto.ca <span class="mono">↗</span></a>
   </dialog>
 
   <dialog class="modal" id="m-amrn">
@@ -436,6 +489,20 @@
       <li>Left with a working grasp of lean development and investor pitching</li>
     </ul>
   </dialog>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+    <div class="palette-box">
+      <div class="palette-input mono">
+        <span class="palette-prompt">AO&gt;</span>
+        <input id="palette-field" type="text" placeholder="type a command… (projects, resume, hire)" autocomplete="off" spellcheck="false" />
+        <span class="palette-esc">ESC</span>
+      </div>
+      <ul class="palette-list mono" id="palette-list" role="listbox"></ul>
+    </div>
+  </div>
+
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
 
   <script src="src/js/main.js" defer></script>
 </body>

@@ -320,6 +320,154 @@
     );
   }
 
+  /* ---------- project cards: spotlight + background sparkline ---------- */
+  document.querySelectorAll(".proj-card").forEach((card, idx) => {
+    if (finePointer && !reduced) {
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - r.left + "px");
+        card.style.setProperty("--my", e.clientY - r.top + "px");
+      });
+    }
+    const spark = card.querySelector(".proj-spark");
+    if (!spark) return;
+    const w = 400, h = 80, n = 34;
+    let val = 30 + ((idx * 13) % 20);
+    const arr = [];
+    for (let i = 0; i < n; i++) {
+      val += 0.9 + (Math.random() - 0.5) * 10;
+      arr.push(val);
+    }
+    const mn = Math.min(...arr), mx = Math.max(...arr);
+    const pt = (p, i) =>
+      `${((i / (n - 1)) * w).toFixed(1)},${(h - 4 - ((p - mn) / (mx - mn || 1)) * (h - 14)).toFixed(1)}`;
+    const line = arr.map(pt).join(" ");
+    spark.innerHTML =
+      `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">` +
+      `<polyline points="${line}" fill="none" stroke="rgba(255,176,32,0.5)" stroke-width="1.5"/>` +
+      `<polygon points="0,${h} ${line} ${w},${h}" fill="rgba(255,176,32,0.07)"/></svg>`;
+  });
+
+  /* ---------- toast ---------- */
+  const toast = document.getElementById("toast");
+  let toastTimer = null;
+  const showToast = (msg, warn) => {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.toggle("warn", !!warn);
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+  };
+
+  /* ---------- newswire ---------- */
+  const nw = document.getElementById("nw-text");
+  if (nw) {
+    const headlines = [
+      "ORTIZ GRADUATES MRU WITH FINANCE & ECONOMICS MINOR — ANALYSTS BULLISH",
+      "DEFEND ML TEAM SHIPS CLASSIFICATION PIPELINE — LEAD 'CONFIDENT IN ROADMAP'",
+      "FRESH PREP ALBERTA ACTIVATIONS OUTPERFORM — TEAM LEAD CREDITS CRM DATA",
+      "RIOALTO.CA DEPLOYED TO PRODUCTION — FREELANCE CONTRACT SETTLED IN FULL",
+      "MRU HACKS PLATFORM SERVES 400+ STUDENTS FOR SECOND CONSECUTIVE YEAR",
+      "RATING AGENCIES MOVE ORTIZ TO 'STRONG HIRE' — PRICE TARGET RAISED",
+    ];
+    if (reduced) {
+      nw.textContent = headlines[0];
+    } else {
+      let hi = 0;
+      const typeLine = () => {
+        const line = headlines[hi % headlines.length];
+        hi++;
+        let i = 0;
+        const t = setInterval(() => {
+          nw.textContent = line.slice(0, ++i);
+          if (i >= line.length) {
+            clearInterval(t);
+            setTimeout(typeLine, 4200);
+          }
+        }, 18);
+      };
+      typeLine();
+    }
+  }
+
+  /* ---------- command palette ---------- */
+  const palette = document.getElementById("palette");
+  const field = document.getElementById("palette-field");
+  const list = document.getElementById("palette-list");
+  const paletteBtn = document.getElementById("palette-btn");
+  if (palette && field && list) {
+    const go = (sel) => document.querySelector(sel)?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+    const commands = [
+      { key: "about", desc: "company profile", run: () => go("#about") },
+      { key: "skills", desc: "the watchlist", run: () => go("#skills") },
+      { key: "projects", desc: "current holdings", run: () => go("#projects") },
+      { key: "experience", desc: "order history", run: () => go("#experience") },
+      { key: "contact", desc: "place an order", run: () => go("#contact") },
+      { key: "resume", desc: "open resume.pdf", run: () => window.open("assets/resume.pdf", "_blank") },
+      { key: "github", desc: "github.com/Aldo140", run: () => window.open("https://github.com/Aldo140", "_blank") },
+      { key: "linkedin", desc: "aldo-ortiz14", run: () => window.open("https://www.linkedin.com/in/aldo-ortiz14/", "_blank") },
+      { key: "email", desc: "aldoortiz14@gmail.com", run: () => { location.href = "mailto:aldoortiz14@gmail.com"; } },
+      { key: "top", desc: "back to the chart", run: () => go("#top") },
+      { key: "hire", desc: "market order · fills instantly", run: () => { showToast("✓ ORDER FILLED — SETTLE VIA CONTACT FORM"); go("#contact"); } },
+      { key: "buy", desc: "alias of hire", run: () => { showToast("✓ ORDER FILLED — SETTLE VIA CONTACT FORM"); go("#contact"); } },
+      { key: "sell", desc: "try it", run: () => showToast("✕ ORDER REJECTED — ALDO IS NOT FOR SALE", true) },
+      { key: "reboot", desc: "replay boot sequence", run: () => { sessionStorage.removeItem("ao-boot"); location.reload(); } },
+    ];
+    let filtered = commands;
+    let sel = 0;
+    const render = () => {
+      list.innerHTML = filtered
+        .map((c, i) =>
+          `<li role="option" class="${i === sel ? "sel" : ""}" data-i="${i}">` +
+          `<span class="pl-key">${c.key}</span><span class="pl-desc">${c.desc}</span></li>`)
+        .join("");
+    };
+    const openPal = () => {
+      palette.hidden = false;
+      field.value = "";
+      filtered = commands;
+      sel = 0;
+      render();
+      field.focus();
+    };
+    const closePal = () => { palette.hidden = true; };
+    const exec = () => {
+      const c = filtered[sel];
+      if (!c) return;
+      closePal();
+      c.run();
+    };
+    document.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        palette.hidden ? openPal() : closePal();
+      } else if (e.key === "/" && palette.hidden && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+        e.preventDefault();
+        openPal();
+      } else if (!palette.hidden) {
+        if (e.key === "Escape") closePal();
+        else if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(sel + 1, filtered.length - 1); render(); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(sel - 1, 0); render(); }
+        else if (e.key === "Enter") { e.preventDefault(); exec(); }
+      }
+    });
+    field.addEventListener("input", () => {
+      const q = field.value.trim().toLowerCase();
+      filtered = commands.filter((c) => c.key.includes(q) || c.desc.includes(q));
+      sel = 0;
+      render();
+    });
+    list.addEventListener("click", (e) => {
+      const li = e.target.closest("li[data-i]");
+      if (!li) return;
+      sel = +li.dataset.i;
+      exec();
+    });
+    palette.addEventListener("click", (e) => { if (e.target === palette) closePal(); });
+    if (paletteBtn) paletteBtn.addEventListener("click", openPal);
+  }
+
   /* ---------- magnetic buttons ---------- */
   if (finePointer && !reduced) {
     document.querySelectorAll("[data-magnet]").forEach((btn) => {
