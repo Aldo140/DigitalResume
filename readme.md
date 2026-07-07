@@ -50,7 +50,7 @@ python3 -m http.server 8000
 
 ## Contact
 
-- aldoortiz14@gmail.com
+- jorti104@mtroyal.ca
 - [LinkedIn](https://www.linkedin.com/in/aldo-ortiz14/) · [GitHub](https://github.com/Aldo140)
 
 MIT License.

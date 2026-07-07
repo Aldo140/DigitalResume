@@ -214,18 +214,29 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
   height: 100%;
   z-index: 1;
 }
+#orbital {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0.98;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
 .hero-grid {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   background:
-    linear-gradient(100deg, rgba(7, 11, 20, 0.88) 22%, rgba(7, 11, 20, 0.35) 48%, transparent 68%),
-    radial-gradient(ellipse 90% 70% at 30% 45%, transparent 30%, rgba(7, 11, 20, 0.75) 100%);
+    linear-gradient(100deg, rgba(7, 11, 20, 0.9) 21%, rgba(7, 11, 20, 0.42) 48%, rgba(7, 11, 20, 0.12) 72%),
+    radial-gradient(ellipse 65% 55% at 74% 42%, rgba(83, 216, 240, 0.09), transparent 54%),
+    radial-gradient(ellipse 90% 70% at 30% 45%, transparent 30%, rgba(7, 11, 20, 0.76) 100%);
   pointer-events: none;
 }
 .hero-inner {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 7rem 1.5rem 6rem;
@@ -268,6 +279,61 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
   margin-bottom: 2.4rem;
 }
 .hero-quote { font-size: 0.78rem; letter-spacing: 0.05em; }
+.hero-orbit-card {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 7.4rem;
+  width: min(260px, 31vw);
+  padding: 0.78rem 0.9rem;
+  border: 1px solid rgba(83, 216, 240, 0.32);
+  border-radius: 10px;
+  background:
+    linear-gradient(140deg, rgba(16, 26, 44, 0.82), rgba(7, 11, 20, 0.52)),
+    radial-gradient(circle at 85% 20%, rgba(83, 216, 240, 0.18), transparent 42%);
+  box-shadow: 0 0 0 1px rgba(255, 176, 32, 0.05), 0 18px 40px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-size: 0.67rem;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+}
+.hero-orbit-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(83, 216, 240, 0.5), transparent);
+  opacity: 0.45;
+  transform: translateX(-58%);
+  animation: orbit-card-scan 4.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  padding: 1px;
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+.orbit-card-kicker {
+  display: block;
+  color: var(--cyan);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.16rem;
+}
+.hero-orbit-card strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-shadow: 0 0 18px rgba(83, 216, 240, 0.28);
+}
+@keyframes orbit-card-scan {
+  0%, 38% { transform: translateX(-58%); opacity: 0; }
+  48% { opacity: 0.55; }
+  74%, 100% { transform: translateX(58%); opacity: 0; }
+}
 
 /* buttons */
 .btn {
@@ -1153,6 +1219,12 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 960px) {
+  #orbital { opacity: 0.62; }
+  .hero-orbit-card {
+    right: 1.5rem;
+    bottom: 5.5rem;
+    width: min(240px, 42vw);
+  }
   .contact-grid { grid-template-columns: 1fr; }
   .id-card { grid-column: span 2; }
   .term { grid-column: span 4; }
@@ -1164,6 +1236,8 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
 }
 
 @media (max-width: 680px) {
+  #orbital { opacity: 0.34; transform: translateX(12%); }
+  .hero-orbit-card { display: none; }
   .id-card, .term, .consensus, .fundamentals, .stats-panel { grid-column: span 6; }
   .term-hint { display: none; }
   .proj-card, .proj-card.feat { grid-column: span 6; }
@@ -1208,6 +1282,7 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
   .nw-text::after { animation: none; }
   .palette-box { animation: none; }
   .id-scan { animation: none; display: none; }
+  .hero-orbit-card::before { animation: none; display: none; }
   .cons-fill, .cons-needle { transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

@@ -176,6 +176,156 @@
     }
   }
 
+  /* ---------- 3D orbital holdings map ---------- */
+  const orbital = document.getElementById("orbital");
+  if (orbital) {
+    const ctx = orbital.getContext("2d");
+    const focusEl = document.getElementById("orbit-focus");
+    const readoutEl = document.getElementById("orbit-readout");
+    const symbols = [
+      { sym: "MRUH", label: "hackathon platform", color: "#FFB020", r: 1.08, speed: 0.76, phase: 0.0, amp: 0.42 },
+      { sym: "RIO", label: "client website", color: "#34E8A4", r: 0.86, speed: 1.05, phase: 0.9, amp: 0.28 },
+      { sym: "ALPH", label: "payments system", color: "#53D8F0", r: 1.24, speed: 0.62, phase: 1.8, amp: 0.36 },
+      { sym: "SENT", label: "NLP engine", color: "#FF5C6C", r: 0.72, speed: 1.3, phase: 2.7, amp: 0.5 },
+      { sym: "DEF", label: "ML delivery", color: "#B6F09C", r: 1.0, speed: 0.9, phase: 3.4, amp: 0.32 },
+      { sym: "NEO", label: "fintech support", color: "#9FB7FF", r: 1.34, speed: 0.52, phase: 4.1, amp: 0.2 },
+    ];
+    let W = 0, H = 0, dpr = 1;
+    let mx = 0, my = 0;
+    let targetMx = 0, targetMy = 0;
+    let focusIndex = 0;
+    let focusTimer = 0;
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = orbital.clientWidth;
+      H = orbital.clientHeight;
+      orbital.width = W * dpr;
+      orbital.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    if (finePointer && !reduced) {
+      window.addEventListener("mousemove", (e) => {
+        targetMx = (e.clientX / window.innerWidth - 0.5) * 2;
+        targetMy = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+    }
+
+    const project = (node, t) => {
+      const cx = W * 0.72;
+      const cy = H * 0.48;
+      const base = Math.min(W, H) * 0.24 * node.r;
+      const a = t * node.speed + node.phase;
+      const x3 = Math.cos(a) * base;
+      const z3 = Math.sin(a) * base;
+      const y3 = Math.sin(a * 1.35 + node.phase) * base * node.amp;
+      const tiltX = mx * 42;
+      const tiltY = my * 28;
+      const depth = 540 + z3;
+      const scale = 540 / depth;
+      return {
+        ...node,
+        x: cx + (x3 + tiltX) * scale,
+        y: cy + (y3 + tiltY) * scale,
+        z: z3,
+        scale,
+        alpha: 0.38 + scale * 0.48,
+      };
+    };
+
+    const drawRing = (cx, cy, rx, ry, rot, color, alpha) => {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(rot);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = color.replace("1)", `${alpha})`);
+      ctx.lineWidth = 1;
+      ctx.setLineDash([6, 14]);
+      ctx.stroke();
+      ctx.restore();
+    };
+
+    const draw = (time) => {
+      const t = time * 0.00045;
+      mx += (targetMx - mx) * 0.04;
+      my += (targetMy - my) * 0.04;
+      ctx.clearRect(0, 0, W, H);
+
+      const cx = W * 0.72 + mx * 26;
+      const cy = H * 0.48 + my * 18;
+      const radius = Math.min(W, H) * 0.25;
+
+      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 1.85);
+      glow.addColorStop(0, "rgba(83,216,240,0.16)");
+      glow.addColorStop(0.42, "rgba(255,176,32,0.055)");
+      glow.addColorStop(1, "rgba(7,11,20,0)");
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, W, H);
+
+      drawRing(cx, cy, radius * 1.18, radius * 0.36, -0.28 + mx * 0.08, "rgba(83,216,240,1)", 0.2);
+      drawRing(cx, cy, radius * 0.92, radius * 0.28, 0.5 + my * 0.08, "rgba(255,176,32,1)", 0.19);
+      drawRing(cx, cy, radius * 1.42, radius * 0.45, 0.08, "rgba(52,232,164,1)", 0.13);
+
+      const pts = symbols.map((s) => project(s, t)).sort((a, b) => a.z - b.z);
+      ctx.lineWidth = 1;
+      pts.forEach((p, idx) => {
+        const next = pts[(idx + 1) % pts.length];
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(next.x, next.y);
+        ctx.strokeStyle = `rgba(140,165,210,${0.06 + Math.min(p.scale, 1.35) * 0.045})`;
+        ctx.stroke();
+      });
+
+      pts.forEach((p) => {
+        const size = Math.max(5, 7.5 * p.scale);
+        const pulse = 1 + Math.sin(time * 0.003 + p.phase) * 0.22;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, size * 4 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + "16";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 16 * p.scale;
+        ctx.globalAlpha = Math.min(1, p.alpha);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+
+        ctx.font = `${Math.max(10, 10 * p.scale)}px 'IBM Plex Mono', monospace`;
+        ctx.fillStyle = `rgba(233,238,247,${Math.min(0.95, 0.42 + p.scale * 0.35)})`;
+        ctx.fillText(p.sym, p.x + size + 8, p.y + 4);
+      });
+
+      focusTimer += 1;
+      if (focusTimer % 120 === 0) {
+        focusIndex = (focusIndex + 1) % symbols.length;
+        const s = symbols[focusIndex];
+        if (focusEl) focusEl.textContent = s.sym;
+        if (readoutEl) readoutEl.textContent = `${s.label} · velocity ${s.speed.toFixed(2)}x`;
+      }
+    };
+
+    if (reduced) {
+      draw(1200);
+    } else {
+      let running = true;
+      const loop = (time) => {
+        if (running) draw(time);
+        requestAnimationFrame(loop);
+      };
+      loop(0);
+      new IntersectionObserver(([e]) => { running = e.isIntersecting; }).observe(orbital);
+    }
+  }
+
   /* ---------- crosshair cursor ---------- */
   const xv = document.getElementById("xh-v");
   const xhH = document.getElementById("xh-h");
@@ -533,7 +683,7 @@ FR █████░░░ INTERMEDIATE`,
       { key: "resume", desc: "open resume.pdf", run: () => window.open("assets/resume.pdf", "_blank") },
       { key: "github", desc: "github.com/Aldo140", run: () => window.open("https://github.com/Aldo140", "_blank") },
       { key: "linkedin", desc: "aldo-ortiz14", run: () => window.open("https://www.linkedin.com/in/aldo-ortiz14/", "_blank") },
-      { key: "email", desc: "aldoortiz14@gmail.com", run: () => { location.href = "mailto:aldoortiz14@gmail.com"; } },
+      { key: "email", desc: "jorti104@mtroyal.ca", run: () => { location.href = "mailto:jorti104@mtroyal.ca"; } },
       { key: "top", desc: "back to the chart", run: () => go("#top") },
       { key: "hire", desc: "market order · fills instantly", run: () => { showToast("✓ ORDER FILLED — SETTLE VIA CONTACT FORM"); go("#contact"); } },
       { key: "buy", desc: "alias of hire", run: () => { showToast("✓ ORDER FILLED — SETTLE VIA CONTACT FORM"); go("#contact"); } },
