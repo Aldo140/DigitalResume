@@ -407,11 +407,45 @@
   if (journey) {
     const stops = [...journey.querySelectorAll(".journey-stop")];
     const active = document.getElementById("journey-active");
+    const current = document.getElementById("journey-current");
+    const range = document.getElementById("journey-range");
+    const kicker = document.getElementById("journey-kicker");
+    const title = document.getElementById("journey-title");
+    const copy = document.getElementById("journey-copy");
+    const proof = document.getElementById("journey-proof");
     const line = journey.querySelector(".journey-line");
+    let currentStop = null;
 
     const setActive = (stop) => {
+      if (!stop || stop === currentStop) return;
+      currentStop = stop;
       stops.forEach((s) => s.classList.toggle("active", s === stop));
       if (active && stop) active.textContent = stop.dataset.stop || "ROUTE";
+
+      const applyCopy = () => {
+        if (range) range.textContent = stop.dataset.consoleRange || "";
+        if (kicker) kicker.textContent = stop.dataset.consoleKicker || "";
+        if (title) title.textContent = stop.dataset.consoleTitle || "";
+        if (copy) copy.textContent = stop.dataset.consoleCopy || "";
+        if (proof) {
+          proof.replaceChildren(...(stop.dataset.consoleProof || "")
+            .split("|")
+            .filter(Boolean)
+            .map((label) => {
+              const span = document.createElement("span");
+              span.textContent = label;
+              return span;
+            }));
+        }
+        if (current) current.classList.remove("is-changing");
+      };
+
+      if (current && !reduced) {
+        current.classList.add("is-changing");
+        window.setTimeout(applyCopy, 140);
+      } else {
+        applyCopy();
+      }
     };
 
     const updateJourney = () => {

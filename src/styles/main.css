@@ -1115,35 +1115,63 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
   28% { opacity: 0.72; }
   100% { transform: scale(1.28); opacity: 0; }
 }
-.journey-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 0.62rem;
+.journey-current {
   margin-top: 1rem;
+  transition: opacity 0.28s ease, transform 0.28s ease, filter 0.28s ease;
 }
-.journey-stats div {
+.journey-current.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(5px);
+}
+.journey-current-top {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px dashed var(--line);
-  padding-bottom: 0.55rem;
+  padding-bottom: 0.65rem;
+  color: var(--amber);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
 }
-.journey-stats dt {
-  color: var(--muted);
-  font-size: 0.58rem;
+.journey-current-top span:last-child {
+  color: var(--cyan);
+}
+.journey-kicker {
+  margin: 0.9rem 0 0.32rem;
+  color: var(--gain);
+  font-size: 0.62rem;
   letter-spacing: 0.16em;
 }
-.journey-stats dd {
-  margin: 0;
-  text-align: right;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
+.journey-current h3 {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
   color: var(--text);
+  text-wrap: balance;
 }
 .journey-copy {
-  margin-top: 1.1rem;
+  margin-top: 0.8rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.94rem;
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+.journey-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-top: 1rem;
+}
+.journey-proof span {
+  color: var(--cyan);
+  border: 1px solid rgba(83, 216, 240, 0.18);
+  background: rgba(83, 216, 240, 0.055);
+  border-radius: 999px;
+  padding: 0.24rem 0.52rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
 }
 .journey-track {
   position: relative;
@@ -1459,8 +1487,8 @@ body.xh-on .xh, body.xh-on #xh-tag { opacity: 1; }
     gap: 1rem 1.4rem;
     align-items: center;
   }
-  .journey-console .panel-title,
-  .journey-copy { grid-column: 1 / -1; }
+  .journey-console .panel-title { grid-column: 1 / -1; }
+  .journey-current { grid-column: 2; }
   .route-radar {
     width: min(190px, 100%);
     margin: 0;

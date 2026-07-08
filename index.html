@@ -198,23 +198,28 @@
         </div>
 
         <aside class="journey-console panel reveal">
-          <p class="mono panel-title">ROUTE CONTROL</p>
+          <p class="mono panel-title">NOW VIEWING</p>
           <div class="route-radar" aria-hidden="true">
             <i></i><i></i><i></i><b></b>
           </div>
-          <dl class="journey-stats mono">
-            <div><dt>VECTOR</dt><dd>SUPPORT → SYSTEMS → ML</dd></div>
-            <div><dt>BASE</dt><dd>CALGARY, CA</dd></div>
-            <div><dt>MODE</dt><dd class="gain">IN MARKET</dd></div>
-            <div><dt>ACTIVE LEG</dt><dd id="journey-active">DEFEND</dd></div>
-          </dl>
-          <p class="journey-copy">Each stop added a different muscle: customer trust, enterprise systems, operational leadership, and technical delivery.</p>
+          <div class="journey-current" id="journey-current">
+            <div class="journey-current-top mono">
+              <span id="journey-range">2020 — 2025</span>
+              <span id="journey-active">MRU</span>
+            </div>
+            <p class="journey-kicker mono" id="journey-kicker">FOUNDATION</p>
+            <h3 id="journey-title">B.C.I.S., Minor in Finance &amp; Economics</h3>
+            <p class="journey-copy" id="journey-copy">Built the base: code, data, systems thinking, finance, economics, and startup pressure.</p>
+            <div class="journey-proof mono" id="journey-proof">
+              <span>BCIS</span><span>FINANCE</span><span>STARTUP</span>
+            </div>
+          </div>
         </aside>
 
         <div class="journey-track" aria-label="Career journey">
           <span class="journey-line" aria-hidden="true"><i></i></span>
 
-          <article class="journey-stop reveal" data-stop="MRU" data-depth="01">
+          <article class="journey-stop reveal" data-stop="MRU" data-depth="01" data-console-range="2020 — 2025" data-console-kicker="FOUNDATION" data-console-title="B.C.I.S., Minor in Finance &amp; Economics" data-console-copy="Built the base: code, data, systems thinking, finance, economics, and startup pressure." data-console-proof="BCIS|FINANCE|STARTUP">
             <div class="stop-pin mono">01</div>
             <div class="stop-card" data-depth="01">
               <div class="stop-meta mono"><span>2020 — 2025</span><span>FOUNDATION</span></div>
@@ -224,7 +229,7 @@
             </div>
           </article>
 
-          <article class="journey-stop reveal" data-stop="NEO" data-depth="02">
+          <article class="journey-stop reveal" data-stop="NEO" data-depth="02" data-console-range="2021 — 2023" data-console-kicker="CUSTOMER SIGNAL" data-console-title="Customer Experience Analyst" data-console-copy="Learned how real users describe friction, urgency, trust, fraud, credit, banking, and escalation." data-console-proof="FINTECH|CRM|ESCALATION">
             <div class="stop-pin mono">02</div>
             <div class="stop-card" data-depth="02">
               <div class="stop-meta mono"><span>2021 — 2023</span><span>CUSTOMER SIGNAL</span></div>
@@ -234,7 +239,7 @@
             </div>
           </article>
 
-          <article class="journey-stop reveal" data-stop="QUADREAL" data-depth="03">
+          <article class="journey-stop reveal" data-stop="QUADREAL" data-depth="03" data-console-range="2023 — 2024" data-console-kicker="ENTERPRISE SYSTEMS" data-console-title="Service Delivery Analyst Intern" data-console-copy="Moved from customer issues into enterprise IT: incidents, requests, runbooks, infrastructure exposure, and support discipline." data-console-proof="SERVICENOW|ITSM|INFRA">
             <div class="stop-pin mono">03</div>
             <div class="stop-card" data-depth="03">
               <div class="stop-meta mono"><span>2023 — 2024</span><span>ENTERPRISE SYSTEMS</span></div>
@@ -244,7 +249,7 @@
             </div>
           </article>
 
-          <article class="journey-stop reveal" data-stop="FRESH PREP" data-depth="04">
+          <article class="journey-stop reveal" data-stop="FRESH PREP" data-depth="04" data-console-range="2025 — 2026" data-console-kicker="FIELD OPS" data-console-title="Field Marketing &amp; Event Team Lead" data-console-copy="Added live operational leadership: people, logistics, partners, CRM reporting, and fast decisions in the field." data-console-proof="TEAM LEAD|CRM|OPS">
             <div class="stop-pin mono">04</div>
             <div class="stop-card" data-depth="04">
               <div class="stop-meta mono"><span>2025 — 2026</span><span>FIELD OPS</span></div>
@@ -254,7 +259,7 @@
             </div>
           </article>
 
-          <article class="journey-stop reveal" data-stop="DEFEND" data-depth="05">
+          <article class="journey-stop reveal" data-stop="DEFEND" data-depth="05" data-console-range="2025 — NOW" data-console-kicker="ACTIVE BUILD" data-console-title="ML Team Lead / Python Developer" data-console-copy="Current build mode: leading ML delivery across Python, NLP, data pipelines, backlog execution, and distributed teamwork." data-console-proof="PYTHON|NLP|DELIVERY">
             <div class="stop-pin mono">05</div>
             <div class="stop-card" data-depth="05">
               <div class="stop-meta mono"><span>2025 — NOW</span><span class="gain">ACTIVE</span></div>
