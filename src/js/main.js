@@ -402,6 +402,59 @@
   }, { threshold: 0.6 });
   counters.forEach((el) => cio.observe(el));
 
+  /* ---------- career journey route ---------- */
+  const journey = document.getElementById("journey-map");
+  if (journey) {
+    const stops = [...journey.querySelectorAll(".journey-stop")];
+    const active = document.getElementById("journey-active");
+    const line = journey.querySelector(".journey-line");
+
+    const setActive = (stop) => {
+      stops.forEach((s) => s.classList.toggle("active", s === stop));
+      if (active && stop) active.textContent = stop.dataset.stop || "ROUTE";
+    };
+
+    const updateJourney = () => {
+      const rect = journey.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const p = Math.min(1, Math.max(0, (vh * 0.72 - rect.top) / (rect.height || 1)));
+      if (line) line.style.setProperty("--journey-progress", `${Math.round(p * 100)}%`);
+
+      let current = stops[0];
+      let best = Infinity;
+      stops.forEach((stop) => {
+        const r = stop.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height * 0.45 - vh * 0.46);
+        if (d < best) { best = d; current = stop; }
+      });
+      if (current) setActive(current);
+    };
+
+    document.addEventListener("scroll", updateJourney, { passive: true });
+    window.addEventListener("resize", updateJourney);
+    updateJourney();
+
+    if (finePointer && !reduced) {
+      stops.forEach((stop) => {
+        const card = stop.querySelector(".stop-card");
+        if (!card) return;
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+          const rx = ((y / r.height) - 0.5) * -5;
+          const ry = ((x / r.width) - 0.5) * 7;
+          card.style.setProperty("--mx", `${x}px`);
+          card.style.setProperty("--my", `${y}px`);
+          card.style.transform = `translateY(-4px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+    }
+  }
+
   /* ---------- watchlist: bars + sparklines ---------- */
   const rows = document.querySelectorAll(".wl-row[data-level]");
   rows.forEach((row) => {
@@ -535,8 +588,8 @@ Previously: Fresh Prep (field marketing lead), QuadReal (enterprise
 IT), Neo Financial (fintech ops).
 
 <span class="t-dim">edge:</span> writes the code <span class="t-ok">AND</span> speaks the business.`,
-      skills: () => `PY ▲  JS ▲  BA ▲  SQL ▲  ML ▲  CLD ▲   <span class="t-dim">— full watchlist in section [02]</span>`,
-      projects: () => `MRUH  RIO  AMRN  CNRP  SENT  ALPH  M2M  TLO   <span class="t-dim">— 8 holdings in section [03]</span>`,
+      skills: () => `PY ▲  JS ▲  BA ▲  SQL ▲  ML ▲  CLD ▲   <span class="t-dim">— full watchlist in section [03]</span>`,
+      projects: () => `MRUH  RIO  AMRN  CNRP  SENT  ALPH  M2M  TLO   <span class="t-dim">— 8 holdings in section [04]</span>`,
       languages: () => `EN ████████ ADVANCED
 ES ████████ FLUENT
 FR █████░░░ INTERMEDIATE`,
