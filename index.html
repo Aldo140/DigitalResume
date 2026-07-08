@@ -344,12 +344,27 @@
       <header class="sec-head reveal">
         <p class="mono sec-tag">[04] PROJECTS &nbsp;·&nbsp; HOLDINGS</p>
         <h2>Current holdings</h2>
-        <p class="sec-note">Eight positions. Click any card for the full prospectus — or press <span class="mono kbd">⌘K</span> and type.</p>
+        <p class="sec-note">A live deal room for shipped work, startup builds, ML systems, and strategy sprints. Open any position for the full prospectus.</p>
       </header>
 
+      <div class="project-desk reveal" aria-label="Project controls">
+        <div class="project-desk-copy">
+          <p class="mono panel-title">DEAL ROOM</p>
+          <h3>Eight positions, one operating thesis.</h3>
+          <p>Projects are grouped by the kind of value they prove: shipped software, technical delivery, customer-facing product sense, and business strategy.</p>
+        </div>
+        <div class="project-filters mono" aria-label="Filter projects">
+          <button class="project-filter active" type="button" data-project-filter="all">ALL</button>
+          <button class="project-filter" type="button" data-project-filter="ship">SHIPPED</button>
+          <button class="project-filter" type="button" data-project-filter="ml">ML</button>
+          <button class="project-filter" type="button" data-project-filter="strategy">STRATEGY</button>
+        </div>
+      </div>
+
       <div class="proj-grid">
-        <button class="proj-card feat reveal" data-modal="m-mruh">
+        <button class="proj-card feat reveal" type="button" data-modal="m-mruh" data-project-kind="ship">
           <div class="proj-top mono"><span class="proj-sym">MRUH</span><span class="gain">▲ LEAD DEV · 2+ YRS</span></div>
+          <span class="proj-rank mono">01</span>
           <h3>MRU Hacks</h3>
           <p>Official website for Mount Royal University's flagship hackathon — registration, live schedules, sponsor and speaker platforms, maintained across two event years.</p>
           <div class="proj-metric mono">
@@ -358,11 +373,13 @@
             <span class="pm"><i>STATUS</i><b>LIVE</b></span>
           </div>
           <span class="proj-tags mono">WEB · UI/UX · EVENTS</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card feat reveal" data-modal="m-rio">
+        <button class="proj-card feat reveal" type="button" data-modal="m-rio" data-project-kind="ship">
           <div class="proj-top mono"><span class="proj-sym">RIO</span><span class="gain">▲ PAID CONTRACT</span></div>
+          <span class="proj-rank mono">02</span>
           <h3>Rio Alto</h3>
           <p>Production website for a Calgary restaurant — a paid freelance contract with a JSON-driven dynamic menu system, built on Eleventy and shipped to rioalto.ca.</p>
           <div class="proj-metric mono">
@@ -371,54 +388,67 @@
             <span class="pm"><i>STATUS</i><b class="gain">IN PROD</b></span>
           </div>
           <span class="proj-tags mono">ELEVENTY · SEO · CLIENT WORK</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-amrn">
+        <button class="proj-card reveal" type="button" data-modal="m-amrn" data-project-kind="strategy">
           <div class="proj-top mono"><span class="proj-sym">AMRN</span><span class="gain">▲ CTO</span></div>
+          <span class="proj-rank mono">03</span>
           <h3>Amarna Energy</h3>
           <p>Renewable-energy marketplace built at the European Innovation Academy in Porto — concept to product in 15 days with Google and Amazon mentors.</p>
           <span class="proj-tags mono">STARTUP · ENERGY · MVP</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-cnrp">
+        <button class="proj-card reveal" type="button" data-modal="m-cnrp" data-project-kind="ship strategy">
           <div class="proj-top mono"><span class="proj-sym">CNRP</span><span class="gain">▲ FINALIST</span></div>
+          <span class="proj-rank mono">04</span>
           <h3>CanRepay</h3>
           <p>Student-loan repayment planner built in a weekend at CalgaryHacks. Debt visualization, repayment strategy, net worth.</p>
           <span class="proj-tags mono">FINTECH · REACT NATIVE</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-sent">
+        <button class="proj-card reveal" type="button" data-modal="m-sent" data-project-kind="ml">
           <div class="proj-top mono"><span class="proj-sym">SENT</span><span class="gain">▲ 85% ACC</span></div>
+          <span class="proj-rank mono">05</span>
           <h3>Sentiment Analysis</h3>
           <p>NLP pipeline classifying social-media sentiment in real time with TensorFlow — trained on Reddit and X data.</p>
           <span class="proj-tags mono">PYTHON · ML · NLP</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-alph">
+        <button class="proj-card reveal" type="button" data-modal="m-alph" data-project-kind="ship">
           <div class="proj-top mono"><span class="proj-sym">ALPH</span><span class="gain">▲ FULL STACK</span></div>
+          <span class="proj-rank mono">06</span>
           <h3>Alphacons</h3>
           <p>Conference registration platform with Stripe payments, admin dashboard, and a Node/MySQL backend on Google Cloud.</p>
           <span class="proj-tags mono">REACT · NODE · STRIPE</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-m2m">
+        <button class="proj-card reveal" type="button" data-modal="m-m2m" data-project-kind="strategy">
           <div class="proj-top mono"><span class="proj-sym">M2M</span><span class="gain">▲ STRATEGY</span></div>
+          <span class="proj-rank mono">07</span>
           <h3>Mission to Market</h3>
           <p>Business hackathon building revenue strategy for Starling Community, a Calgary non-profit — research to pitch.</p>
           <span class="proj-tags mono">STRATEGY · NON-PROFIT</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
 
-        <button class="proj-card reveal" data-modal="m-tlo">
+        <button class="proj-card reveal" type="button" data-modal="m-tlo" data-project-kind="strategy">
           <div class="proj-top mono"><span class="proj-sym">TLO</span><span class="gain">▲ PRODUCT</span></div>
+          <span class="proj-rank mono">08</span>
           <h3>Tech LiftOff</h3>
           <p>University startup program — led product planning for a real-estate data concept from ideation to investor pitch.</p>
           <span class="proj-tags mono">PRODUCT · PITCHING</span>
+          <span class="proj-open mono">OPEN PROSPECTUS ↗</span>
           <span class="proj-spark" aria-hidden="true"></span>
         </button>
       </div>

@@ -557,13 +557,35 @@
     );
   }
 
-  /* ---------- project cards: spotlight + background sparkline ---------- */
-  document.querySelectorAll(".proj-card").forEach((card, idx) => {
+  /* ---------- project deal room ---------- */
+  const projectCards = [...document.querySelectorAll(".proj-card")];
+  document.querySelectorAll(".project-filter").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.projectFilter || "all";
+      document.querySelectorAll(".project-filter").forEach((b) => b.classList.toggle("active", b === btn));
+      projectCards.forEach((card) => {
+        const show = filter === "all" || (card.dataset.projectKind || "").split(" ").includes(filter);
+        card.classList.toggle("is-hidden", !show);
+        card.setAttribute("aria-hidden", show ? "false" : "true");
+        card.tabIndex = show ? 0 : -1;
+      });
+    });
+  });
+
+  projectCards.forEach((card, idx) => {
     if (finePointer && !reduced) {
       card.addEventListener("mousemove", (e) => {
         const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - r.left + "px");
-        card.style.setProperty("--my", e.clientY - r.top + "px");
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        card.style.setProperty("--mx", x + "px");
+        card.style.setProperty("--my", y + "px");
+        card.style.setProperty("--rx", (((y / r.height) - 0.5) * -4).toFixed(2) + "deg");
+        card.style.setProperty("--ry", (((x / r.width) - 0.5) * 5).toFixed(2) + "deg");
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
       });
     }
     const spark = card.querySelector(".proj-spark");
